@@ -11,10 +11,11 @@
 
     <item android:id="@+id/target"
         android:title=""
-        android:icon="@drawable/target_icon" />
+        android:icon="@drawable/target_icon"
+        />
 
-    <item android:id="@+id/more"
+    <item android:id="@+id/school"
         android:title=""
-        android:icon="@drawable/more_icon" />
+        android:icon="@drawable/school_icon" />
 
 </menu>
