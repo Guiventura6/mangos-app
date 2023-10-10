@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/principal"
+        android:title="Principal"
+        android:icon="@drawable/home_icon"/>
+
+    <item android:id="@+id/chart"
+        android:title="Gráficos"
+        android:icon="@drawable/chart_icon"/>
+
+    <item android:id="@+id/target"
+        android:title="Objetivos"
+        android:icon="@drawable/target_icon"/>
+
+    <item android:id="@+id/school"
+        android:title="Educação Financeira"
+        android:icon="@drawable/school_icon"/>
+
+    <item android:id="@+id/logout"
+        android:title="Encerrar sessão"
+        android:icon="@drawable/logout_icon"/>
+
+</menu>

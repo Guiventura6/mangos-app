@@ -10,5 +10,6 @@
 
     <!-- Meu tema -->
     <color name="appbar">#FFAB00</color>
+    <color name="nav_header">#FFAB00</color>
 
 </resources>
