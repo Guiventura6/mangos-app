@@ -153,8 +153,107 @@
 
         </LinearLayout>
 
-
-
     </androidx.cardview.widget.CardView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recycler_id_home"
+            android:background="#FFF1F3FC"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="160dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gastos"
+                android:id="@+id/expense_ft_text"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:background="@color/nav_header"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:visibility="invisible"
+                android:textAppearance="?android:textAppearanceSmall"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gastos_ft_btn"
+                android:layout_gravity="bottom|end"
+                android:tint="@color/white"
+                android:backgroundTint="@color/gastos"
+                android:outlineSpotShadowColor="@color/white"
+                android:elevation="6dp"
+                app:fabSize="mini"
+                android:visibility="invisible"
+                app:pressedTranslationZ="12dp"
+                android:src="@drawable/sub_icon"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="90dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ganhos"
+                android:id="@+id/income_ft_text"
+                android:textColor="@android:color/white"
+                android:padding="5dp"
+                android:background="@color/nav_header"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:visibility="invisible"
+                android:textAppearance="?android:textAppearanceSmall"
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ganhos_ft_btn"
+                android:layout_gravity="bottom|end"
+                android:tint="@color/white"
+                android:backgroundTint="@color/ganhos"
+                android:outlineSpotShadowColor="@color/white"
+                android:elevation="6dp"
+                android:translationZ="12dp"
+                android:visibility="invisible"
+                android:src="@drawable/add_icon"
+                />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:id="@+id/fb_main_plus_btn"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="20dp"
+            android:tint="@color/white"
+            android:backgroundTint="@color/appbar"
+            android:outlineSpotShadowColor="@color/white"
+            app:fabSize="normal"
+            android:src="@drawable/add_icon"
+            android:layout_height="wrap_content" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
