@@ -11,5 +11,8 @@
     <!-- Meu tema -->
     <color name="appbar">#FFAB00</color>
     <color name="nav_header">#FFAB00</color>
+    <color name="gastos">#E33535</color>
+    <color name="ganhos">#00C853</color>
+    <color name="saldo_total">#808080</color>
 
 </resources>
