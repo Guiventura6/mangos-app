@@ -16,12 +16,19 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
+
+    // Fragments
+    private HomeFragment homeFragment;
+    private InsightFragment insightFragment;
+    private StrategyFragment strategyFragment;
+    private EducationFragment educationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView=findViewById(R.id.naView);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Instanciando meus fragmentos
+        homeFragment = new HomeFragment();
+        insightFragment = new InsightFragment();
+        strategyFragment = new StrategyFragment();
+        educationFragment = new EducationFragment();
+
+        setFragment(homeFragment);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        setFragment(homeFragment);
+                        return true;
+
+                    case R.id.insights:
+                        setFragment(insightFragment);
+                        return true;
+
+                    case R.id.strategy_decision_board:
+                        setFragment(strategyFragment);
+                        return true;
+
+                    case R.id.school:
+                        setFragment(educationFragment);
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+        });
     }
 
     private void setFragment(Fragment fragment) {

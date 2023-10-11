@@ -5,11 +5,11 @@
         android:title=""
         android:icon="@drawable/home_icon" />
 
-    <item android:id="@+id/chart"
+    <item android:id="@+id/insights"
         android:title=""
         android:icon="@drawable/chart_icon" />
 
-    <item android:id="@+id/target"
+    <item android:id="@+id/strategy_decision_board"
         android:title=""
         android:icon="@drawable/target_icon"
         />
