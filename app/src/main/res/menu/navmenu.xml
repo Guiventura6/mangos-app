@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/principal"
+    <item android:id="@+id/home"
         android:title="Principal"
         android:icon="@drawable/home_icon"/>
 
-    <item android:id="@+id/chart"
-        android:title="Gráficos"
+    <item android:id="@+id/insights"
+        android:title="Análises"
         android:icon="@drawable/chart_icon"/>
 
-    <item android:id="@+id/target"
-        android:title="Objetivos"
-        android:icon="@drawable/target_icon"/>
+    <item android:id="@+id/strategy_decision_board"
+        android:title="Estratégias"
+        android:icon="@drawable/insights_icon"/>
 
     <item android:id="@+id/school"
         android:title="Educação Financeira"

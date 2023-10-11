@@ -11,7 +11,7 @@
 
     <item android:id="@+id/strategy_decision_board"
         android:title=""
-        android:icon="@drawable/target_icon"
+        android:icon="@drawable/insights_icon"
         />
 
     <item android:id="@+id/school"

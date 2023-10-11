@@ -112,20 +112,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment=null;
 
         switch (itemId){
-            case R.id.principal:
-                // fragment=new DashBoardFragment();
+            case R.id.home:
+                fragment=new HomeFragment();
                 break;
 
-            case R.id.chart:
-                // fragment=new IncomeFragment();
+            case R.id.insights:
+                fragment=new InsightFragment();
                 break;
 
-            case R.id.target:
-                // fragment=new ExpenseFragment();
+            case R.id.strategy_decision_board:
+                fragment=new StrategyFragment();
                 break;
 
             case R.id.school:
-                // fragment=new TargetFragment();
+                fragment=new EducationFragment();
                 break;
 
             case R.id.logout:
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        displaySelectedListener(item.getItemId());
         return false;
     }
 
