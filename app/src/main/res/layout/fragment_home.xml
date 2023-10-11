@@ -29,7 +29,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -47,7 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -66,7 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -93,7 +93,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -112,7 +113,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -131,7 +133,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -141,7 +144,7 @@
                         android:textAppearance="?android:textAppearanceSmall"
                         android:textStyle="bold"
                         android:textColor="@color/ganhos"
-                        android:text="+R$ 000,00"
+                        android:text="+R$ 0,00"
                         />
 
                 </RelativeLayout>
