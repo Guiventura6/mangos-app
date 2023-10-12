@@ -2,16 +2,24 @@ package com.example.mangosapp;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +103,7 @@ public class HomeFragment extends Fragment {
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                addData();
                 if (isOpen){
                     fab_ganhos_btn.startAnimation(FadeClose);
                     fab_gastos_btn.startAnimation(FadeClose);
@@ -152,6 +160,91 @@ public class HomeFragment extends Fragment {
             fab_ganhos_txt.setClickable(true);
             isOpen=true;
         }
+    }
+
+    private void addData(){
+
+        //Fab Button income...
+        /* fab_income_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                incomeDataInsert();
+            }
+        });*/
+
+        fab_gastos_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GastosDataInsert();
+            }
+        });
+
+    }
+
+    public void GastosDataInsert(){
+
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater=LayoutInflater.from(getActivity());
+        View myview=inflater.inflate(R.layout.insert_gastos_item, null);
+        mydialog.setView(myview);
+
+        final AlertDialog dialog=mydialog.create();
+        dialog.setCancelable(false);
+
+        final EditText description=myview.findViewById(R.id.description_edt);
+
+        Button btnSave=myview.findViewById(R.id.btn_save);
+        Button btnCancel=myview.findViewById(R.id.btn_cancel);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String tmDescription=description.getText().toString().trim();
+                // String tmType=type.getText().toString().trim();
+                // String tmNote=note.getText().toString().trim();
+
+                if (TextUtils.isEmpty(tmDescription)){
+                    description.setError("Required Field..");
+                    return;
+                }
+
+                /*
+                int inamount=Integer.parseInt();
+
+                if (TextUtils.isEmpty(tmType)){
+                    type.setError("Required Field..");
+                    return;
+                }
+                if (TextUtils.isEmpty(tmNote)){
+                    note.setError("Required Field..");
+                    return;
+                }*/
+
+                // String id=mExpenseDatabase.push().getKey();
+                // String mDate= DateFormat.getInstance().format(new Date());
+
+                // Data data=new Data(inamount, tmType, tmNote, id, mDate);
+                // mExpenseDatabase.child(id).setValue(data);
+                Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
+
+                ftAnimation();
+                dialog.dismiss();
+
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ftAnimation();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+
     }
 
 }
