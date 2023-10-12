@@ -130,7 +130,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         return myview;
     }
 
@@ -165,23 +164,23 @@ public class HomeFragment extends Fragment {
     private void addData(){
 
         //Fab Button income...
-        /* fab_income_btn.setOnClickListener(new View.OnClickListener() {
+        fab_ganhos_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                incomeDataInsert();
+                ganhosDataInsert();
             }
-        });*/
+        });
 
         fab_gastos_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GastosDataInsert();
+                gastosDataInsert();
             }
         });
 
     }
 
-    public void GastosDataInsert(){
+    public void gastosDataInsert(){
 
         AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=LayoutInflater.from(getActivity());
@@ -192,6 +191,9 @@ public class HomeFragment extends Fragment {
         dialog.setCancelable(false);
 
         final EditText description=myview.findViewById(R.id.description_edt);
+        final EditText amount=myview.findViewById(R.id.amount_edt);
+        final EditText data=myview.findViewById(R.id.data_edt);
+        final EditText category=myview.findViewById(R.id.category_edt);
 
         Button btnSave=myview.findViewById(R.id.btn_save);
         Button btnCancel=myview.findViewById(R.id.btn_cancel);
@@ -244,6 +246,74 @@ public class HomeFragment extends Fragment {
 
         dialog.show();
 
+
+    }
+
+    public void ganhosDataInsert(){
+
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater=LayoutInflater.from(getActivity());
+        View myview=inflater.inflate(R.layout.insert_ganhos_item, null);
+        mydialog.setView(myview);
+
+        final AlertDialog dialog=mydialog.create();
+        dialog.setCancelable(false);
+
+        final EditText description=myview.findViewById(R.id.description_edt);
+        final EditText amount=myview.findViewById(R.id.amount_edt);
+        final EditText data=myview.findViewById(R.id.data_edt);
+        final EditText category=myview.findViewById(R.id.category_edt);
+
+        Button btnSave=myview.findViewById(R.id.btn_save);
+        Button btnCancel=myview.findViewById(R.id.btn_cancel);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String tmDescription=description.getText().toString().trim();
+                // String tmType=type.getText().toString().trim();
+                // String tmNote=note.getText().toString().trim();
+
+                if (TextUtils.isEmpty(tmDescription)){
+                    description.setError("Required Field..");
+                    return;
+                }
+
+                /*
+                int inamount=Integer.parseInt();
+
+                if (TextUtils.isEmpty(tmType)){
+                    type.setError("Required Field..");
+                    return;
+                }
+                if (TextUtils.isEmpty(tmNote)){
+                    note.setError("Required Field..");
+                    return;
+                }*/
+
+                // String id=mExpenseDatabase.push().getKey();
+                // String mDate= DateFormat.getInstance().format(new Date());
+
+                // Data data=new Data(inamount, tmType, tmNote, id, mDate);
+                // mExpenseDatabase.child(id).setValue(data);
+                Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
+
+                ftAnimation();
+                dialog.dismiss();
+
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ftAnimation();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
 
     }
 
