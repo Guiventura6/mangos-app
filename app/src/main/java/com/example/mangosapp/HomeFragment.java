@@ -202,26 +202,31 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String tmDescription=description.getText().toString().trim();
-                // String tmType=type.getText().toString().trim();
-                // String tmNote=note.getText().toString().trim();
+                String txtDescription=description.getText().toString().trim();
+                String txtAmount=amount.getText().toString().trim();
+                String txtxData=data.getText().toString().trim();
+                String txtCategory=category.getText().toString().trim();
 
-                if (TextUtils.isEmpty(tmDescription)){
+                if (TextUtils.isEmpty(txtDescription)){
                     description.setError("Required Field..");
                     return;
                 }
 
-                /*
-                int inamount=Integer.parseInt();
-
-                if (TextUtils.isEmpty(tmType)){
-                    type.setError("Required Field..");
+                if (TextUtils.isEmpty(txtAmount)){
+                    amount.setError("Required Field..");
                     return;
                 }
-                if (TextUtils.isEmpty(tmNote)){
-                    note.setError("Required Field..");
+
+                int intAmount=Integer.parseInt(txtAmount);
+
+                if (TextUtils.isEmpty(txtxData)){
+                    data.setError("Required Field..");
                     return;
-                }*/
+                }
+                if (TextUtils.isEmpty(txtCategory)){
+                    category.setError("Required Field..");
+                    return;
+                }
 
                 // String id=mExpenseDatabase.push().getKey();
                 // String mDate= DateFormat.getInstance().format(new Date());
@@ -271,27 +276,31 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String tmDescription=description.getText().toString().trim();
-                // String tmType=type.getText().toString().trim();
-                // String tmNote=note.getText().toString().trim();
+                String txtDescription=description.getText().toString().trim();
+                String txtAmount=amount.getText().toString().trim();
+                String txtData=data.getText().toString().trim();
+                String txtCategory=category.getText().toString().trim();
 
-                if (TextUtils.isEmpty(tmDescription)){
+                if (TextUtils.isEmpty(txtDescription)){
                     description.setError("Required Field..");
                     return;
                 }
 
-                /*
-                int inamount=Integer.parseInt();
-
-                if (TextUtils.isEmpty(tmType)){
-                    type.setError("Required Field..");
+                if (TextUtils.isEmpty(txtAmount)){
+                    amount.setError("Required Field..");
                     return;
                 }
-                if (TextUtils.isEmpty(tmNote)){
-                    note.setError("Required Field..");
-                    return;
-                }*/
 
+                int intAmount=Integer.parseInt(txtAmount);
+
+                if (TextUtils.isEmpty(txtData)){
+                    data.setError("Required Field..");
+                    return;
+                }
+                if (TextUtils.isEmpty(txtCategory)) {
+                    category.setError("Required Field..");
+                    return;
+                }
                 // String id=mExpenseDatabase.push().getKey();
                 // String mDate= DateFormat.getInstance().format(new Date());
 
