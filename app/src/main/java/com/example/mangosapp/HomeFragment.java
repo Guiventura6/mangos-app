@@ -23,8 +23,14 @@ import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,12 +55,15 @@ public class HomeFragment extends Fragment {
     private Animation FadeOpen, FadeClose;
 
     // Conecte Firebase
-    private DatabaseReference mGastosDatabase;
-    private DatabaseReference mGanhosDatabase;
+    private DatabaseReference mTransactionDatabase;
 
     //Recycler view
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter adapter;
+
+    private static final int VIEW_TYPE_GASTO = 1;
+    private static final int VIEW_TYPE_GANHO = 2;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -114,8 +123,7 @@ public class HomeFragment extends Fragment {
         fab_gastos_txt=myview.findViewById(R.id.expense_ft_text);
 
         // Firebase Database
-        mGastosDatabase = FirebaseDatabase.getInstance().getReference().child("Gastos");
-        mGanhosDatabase = FirebaseDatabase.getInstance().getReference().child("Ganhos");
+        mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions");
 
         //Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);
@@ -165,29 +173,50 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Transactions> options = new FirebaseRecyclerOptions.Builder<Transactions>()
-                .setQuery(mGastosDatabase, Transactions.class)
+        FirebaseRecyclerOptions<Transactions> options= new FirebaseRecyclerOptions.Builder<Transactions>()
+                .setQuery(mTransactionDatabase, Transactions.class)
                 .build();
 
-        adapter = new FirebaseRecyclerAdapter<Transactions, HomeFragment.GastosViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Transactions, RecyclerView.ViewHolder>(options){
 
             @NonNull
             @Override
-            public GastosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return new GastosViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.gastos_recycler_data, parent, false));
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view;
+                LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+                if (viewType == VIEW_TYPE_GASTO) {
+                    view = inflater.inflate(R.layout.gastos_recycler_data, parent, false);
+                    return new GastosViewHolder(view);
+                } else { // VIEW_TYPE_GANHO
+                    view = inflater.inflate(R.layout.ganhos_recycler_data, parent, false);
+                    return new GanhosViewHolder(view);
+                }
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull GastosViewHolder holder, int position, @NonNull Transactions model) {
-                holder.setGastosDescription(model.getDescription());
-                holder.setGastosAmount(model.getAmount());
-                holder.setGastosDate(model.getDate());
-                holder.setGastosCategory(model.getCategory());
+            public int getItemViewType(int position) {
+                // Retorne um valor único para cada tipo de item (gasto ou ganho)
+                return getItem(position).getType().equals("gasto") ? VIEW_TYPE_GASTO : VIEW_TYPE_GANHO;
+            }
+
+
+            @Override
+            protected void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull Transactions model) {
+                if (model.getType().equals("gasto")) {
+                    ((GastosViewHolder) holder).setGastosDescription(model.getDescription());
+                    ((GastosViewHolder) holder).setGastosAmount(model.getAmount());
+                    ((GastosViewHolder) holder).setGastosDate(model.getDate());
+                    ((GastosViewHolder) holder).setGastosCategory(model.getCategory());
+                } else if (model.getType().equals("ganho")) {
+                    ((GanhosViewHolder) holder).setGanhosDescription(model.getDescription());
+                    ((GanhosViewHolder) holder).setGanhosAmount(model.getAmount());
+                    ((GanhosViewHolder) holder).setGanhosDate(model.getDate());
+                    ((GanhosViewHolder) holder).setGanhosCategory(model.getCategory());
+                }
             }
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-
     }
 
     private static class GastosViewHolder extends RecyclerView.ViewHolder{
@@ -221,6 +250,39 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
+    private static class GanhosViewHolder extends RecyclerView.ViewHolder{
+
+        View mGanhosView;
+
+        public GanhosViewHolder(@NonNull View itemView) {
+            super(itemView);
+            mGanhosView=itemView;
+        }
+
+        void setGanhosDescription(String description){
+            TextView mDescription=mGanhosView.findViewById(R.id.description_txt_ganhos);
+            mDescription.setText(description);
+        }
+
+        void setGanhosAmount(int amount){
+            TextView mAmount=mGanhosView.findViewById(R.id.amount_txt_ganhos);
+            String strAmount=String.valueOf(amount);
+            mAmount.setText("+R$ " + strAmount+ ",00");
+        }
+
+        void setGanhosDate(String date){
+            TextView mDate=mGanhosView.findViewById(R.id.date_txt_ganhos);
+            mDate.setText(date);
+        }
+
+        void setGanhosCategory(String category){
+            TextView mCategory=mGanhosView.findViewById(R.id.category_txt_ganhos);
+            mCategory.setText(category);
+        }
+
+    }
+
 
     //Floating button animation
     private void ftAnimation(){
@@ -317,12 +379,13 @@ public class HomeFragment extends Fragment {
                     return;
                 }
 
-                String id= mGastosDatabase.push().getKey();
+                String id= mTransactionDatabase.push().getKey();
+                String type="gasto";
                 // String mDate= DateFormat.getInstance().format(new Date());
 
-                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory);
+                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory, type);
 
-                mGastosDatabase.child(id).setValue(data);
+                mTransactionDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
 
                 ftAnimation();
@@ -392,11 +455,12 @@ public class HomeFragment extends Fragment {
                     return;
                 }
 
-                String id= mGanhosDatabase.push().getKey();
+                String id= mTransactionDatabase.push().getKey();
+                String type="ganho";
 
-                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory);
+                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory, type);
 
-                mGanhosDatabase.child(id).setValue(data);
+                mTransactionDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
 
                 ftAnimation();

@@ -8,16 +8,19 @@ public class Transactions {
     private int amount;
     private String date;
     private String category;
+    private String type;
 
     public Transactions(){}
 
-    public Transactions(String id, String description, int amount, String date, String category) {
+    public Transactions(String id, String description, int amount, String date, String category, String type) {
         this.id = id;
         this.description = description;
         this.amount = amount;
         this.date = date;
         this.category = category;
+        this.type = type;
     }
+
 
     public String getId() {
         return id;
@@ -57,5 +60,13 @@ public class Transactions {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
