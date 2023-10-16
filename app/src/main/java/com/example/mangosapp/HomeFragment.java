@@ -17,14 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.DateFormat;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,7 +46,8 @@ public class HomeFragment extends Fragment {
     private Animation FadeOpen, FadeClose;
 
     // Conecte Firebase
-    private DatabaseReference mTransactionsDatabase;
+    private DatabaseReference mGastosDatabase;
+    private DatabaseReference mGanhosDatabase;
 
     //Recycler view
     private RecyclerView recyclerView;
@@ -113,7 +111,8 @@ public class HomeFragment extends Fragment {
         fab_gastos_txt=myview.findViewById(R.id.expense_ft_text);
 
         // Firebase Database
-        mTransactionsDatabase= FirebaseDatabase.getInstance().getReference().child("TransactionsData");
+        mGastosDatabase = FirebaseDatabase.getInstance().getReference().child("Gastos");
+        mGanhosDatabase = FirebaseDatabase.getInstance().getReference().child("Ganhos");
 
         //Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);
@@ -230,7 +229,7 @@ public class HomeFragment extends Fragment {
 
                 String txtDescription=description.getText().toString().trim();
                 String txtAmount=amount.getText().toString().trim();
-                String txtxData=data.getText().toString().trim();
+                String txtData=data.getText().toString().trim();
                 String txtCategory=category.getText().toString().trim();
 
                 if (TextUtils.isEmpty(txtDescription)){
@@ -245,7 +244,7 @@ public class HomeFragment extends Fragment {
 
                 int intAmount=Integer.parseInt(txtAmount);
 
-                if (TextUtils.isEmpty(txtxData)){
+                if (TextUtils.isEmpty(txtData)){
                     data.setError("Required Field..");
                     return;
                 }
@@ -254,11 +253,12 @@ public class HomeFragment extends Fragment {
                     return;
                 }
 
-                // String id=mExpenseDatabase.push().getKey();
+                String id= mGastosDatabase.push().getKey();
                 // String mDate= DateFormat.getInstance().format(new Date());
 
-                // Data data=new Data(inamount, tmType, tmNote, id, mDate);
-                // mExpenseDatabase.child(id).setValue(data);
+                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory);
+
+                mGastosDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
 
                 ftAnimation();
@@ -327,11 +327,12 @@ public class HomeFragment extends Fragment {
                     category.setError("Required Field..");
                     return;
                 }
-                // String id=mExpenseDatabase.push().getKey();
-                // String mDate= DateFormat.getInstance().format(new Date());
 
-                // Data data=new Data(inamount, tmType, tmNote, id, mDate);
-                // mExpenseDatabase.child(id).setValue(data);
+                String id= mGanhosDatabase.push().getKey();
+
+                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory);
+
+                mGanhosDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
 
                 ftAnimation();
