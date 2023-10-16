@@ -2,8 +2,10 @@ package com.example.mangosapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -117,6 +120,14 @@ public class HomeFragment extends Fragment {
         //Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);
 
+        //Recycler
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
+
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +165,60 @@ public class HomeFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        // FirebaseRecyclerOptions<Date>
+        FirebaseRecyclerOptions<Transactions> options = new FirebaseRecyclerOptions.Builder<Transactions>()
+                .setQuery(mGastosDatabase, Transactions.class)
+                .build();
+
+        adapter = new FirebaseRecyclerAdapter<Transactions, HomeFragment.GastosViewHolder>(options) {
+
+            @NonNull
+            @Override
+            public GastosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return new GastosViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.gastos_recycler_data, parent, false));
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull GastosViewHolder holder, int position, @NonNull Transactions model) {
+                holder.setGastosDescription(model.getDescription());
+                holder.setGastosAmount(model.getAmount());
+                holder.setGastosDate(model.getDate());
+                holder.setGastosCategory(model.getCategory());
+            }
+        };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+    }
+
+    private static class GastosViewHolder extends RecyclerView.ViewHolder{
+
+        View mGastosView;
+
+        public GastosViewHolder(@NonNull View itemView) {
+            super(itemView);
+            mGastosView=itemView;
+        }
+
+        void setGastosDescription(String description){
+            TextView mDescription=mGastosView.findViewById(R.id.description_txt_gastos);
+            mDescription.setText(description);
+        }
+
+        void setGastosAmount(int amount){
+            TextView mAmount=mGastosView.findViewById(R.id.amount_txt_gastos);
+            String strAmount=String.valueOf(amount);
+            mAmount.setText("-R$ " + strAmount+ ",00");
+        }
+
+        void setGastosDate(String date){
+            TextView mDate=mGastosView.findViewById(R.id.data_txt_gastos);
+            mDate.setText(date);
+        }
+
+        void setGastosCategory(String category){
+            TextView mCategory=mGastosView.findViewById(R.id.category_txt_gastos);
+            mCategory.setText(category);
+        }
 
     }
 
