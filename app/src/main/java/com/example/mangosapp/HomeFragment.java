@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,7 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -42,6 +47,13 @@ public class HomeFragment extends Fragment {
 
     //Animation.
     private Animation FadeOpen, FadeClose;
+
+    // Conecte Firebase
+    private DatabaseReference mTransactionsDatabase;
+
+    //Recycler view
+    private RecyclerView recyclerView;
+    private FirebaseRecyclerAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -100,6 +112,12 @@ public class HomeFragment extends Fragment {
         fab_ganhos_txt=myview.findViewById(R.id.income_ft_text);
         fab_gastos_txt=myview.findViewById(R.id.expense_ft_text);
 
+        // Firebase Database
+        mTransactionsDatabase= FirebaseDatabase.getInstance().getReference().child("TransactionsData");
+
+        //Recycler
+        recyclerView=myview.findViewById(R.id.recycler_id_home);
+
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,6 +149,14 @@ public class HomeFragment extends Fragment {
         });
 
         return myview;
+    }
+
+
+    public void onStart() {
+        super.onStart();
+
+        // FirebaseRecyclerOptions<Date>
+
     }
 
     //Floating button animation
