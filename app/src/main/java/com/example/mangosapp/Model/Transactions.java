@@ -3,7 +3,6 @@ package com.example.mangosapp.Model;
 public class Transactions {
 
     private String id;
-
     private String description;
     private int amount;
     private String date;

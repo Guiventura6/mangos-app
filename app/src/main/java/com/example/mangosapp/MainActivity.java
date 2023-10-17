@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
 
-
     }
 
     public void displaySelectedListener(int itemId){

@@ -43,6 +43,11 @@ public class HomeFragment extends Fragment {
     private TextView fab_ganhos_txt;
     private TextView fab_gastos_txt;
 
+    // Total saldo, gastos, ganhos
+    private TextView total_saldo;
+    private TextView total_gastos;
+    private TextView total_ganhos;
+
     //boolen
     private boolean isOpen=false;
 
@@ -80,19 +85,62 @@ public class HomeFragment extends Fragment {
         fab_ganhos_txt=myview.findViewById(R.id.income_ft_text);
         fab_gastos_txt=myview.findViewById(R.id.expense_ft_text);
 
+        // Total saldo, gastos e ganhos
+        total_saldo=myview.findViewById(R.id.home_txt_saldo_total);
+        total_gastos=myview.findViewById(R.id.home_txt_saldo_gastos);
+        total_ganhos=myview.findViewById(R.id.home_txt_saldo_ganhos);
+
         // Firebase Database
         mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions");
 
-        //Recycler
+        //Conect Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);
 
-        //Recycler
+        //Recycler config
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
 
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
+
+        //Calculate saldos
+        mTransactionDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int saldo=0;
+                int gastos=0;
+                int ganhos=0;
+
+                for (DataSnapshot mysnap:snapshot.getChildren()){
+                    Transactions data=mysnap.getValue(Transactions.class);
+
+                    if (data.getType().equals("gasto")){
+                        gastos+=data.getAmount();
+                    } else if (data.getType().equals("ganho")) {
+                        ganhos+= data.getAmount();
+                    }
+                }
+
+                String str_gastos=String.valueOf(gastos);
+                String str_ganhos=String.valueOf(ganhos);
+                total_gastos.setText("-R$ "+str_gastos+",00");
+                total_ganhos.setText("+R$ "+str_ganhos+",00");
+
+                saldo = ganhos - gastos;
+                String str_saldo=String.valueOf(saldo);
+                if (saldo < 0){
+                    total_saldo.setText("-R$ "+str_saldo+",00");
+                } else {
+                    total_saldo.setText("+R$ "+str_saldo+",00");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
