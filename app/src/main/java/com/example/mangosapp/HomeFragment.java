@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -152,9 +153,11 @@ public class HomeFragment extends Fragment {
                 saldo = ganhos - gastos;
                 String str_saldo=String.valueOf(saldo);
                 if (saldo < 0){
-                    total_saldo.setText("-R$ "+str_saldo+",00");
+                    total_saldo.setText("R$ "+str_saldo+",00");
+                    total_saldo.setTextColor(ContextCompat.getColor(getContext(), R.color.gastos));
                 } else {
-                    total_saldo.setText("+R$ "+str_saldo+",00");
+                    total_saldo.setText("R$ "+str_saldo+",00");
+                    total_saldo.setTextColor(ContextCompat.getColor(getContext(), R.color.ganhos));
                 }
             }
 
