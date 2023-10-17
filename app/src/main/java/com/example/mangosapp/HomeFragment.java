@@ -235,6 +235,22 @@ public class HomeFragment extends Fragment {
                     ((GastosViewHolder) holder).setGastosAmount(model.getAmount());
                     ((GastosViewHolder) holder).setGastosDate(model.getDate());
                     ((GastosViewHolder) holder).setGastosCategory(model.getCategory());
+
+                    ((GastosViewHolder) holder).mGastosView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int pos=holder.getBindingAdapterPosition();
+                            post_key=getRef(pos).getKey();
+
+                            description=model.getDescription();
+                            amount=model.getAmount();
+                            date=model.getDate();
+                            category= model.getCategory();
+
+                            updateGastoItem();
+                        }
+                    });
+
                 } else if (model.getType().equals("ganho")) {
                     ((GanhosViewHolder) holder).setGanhosDescription(model.getDescription());
                     ((GanhosViewHolder) holder).setGanhosAmount(model.getAmount());
@@ -257,10 +273,6 @@ public class HomeFragment extends Fragment {
                     });
                 }
             }
-
-
-
-
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
@@ -303,6 +315,67 @@ public class HomeFragment extends Fragment {
                 date=edtDate.getText().toString().trim();
                 category=edtCategory.getText().toString().trim();
                 type="ganho";
+
+                String strAmount=String.valueOf(amount);
+                strAmount=edtAmount.getText().toString().trim();
+
+                int intAmount=Integer.parseInt(strAmount);
+
+                Transactions data=new Transactions(post_key, description, intAmount, date, category, type);
+                mTransactionDatabase.child(post_key).setValue(data);
+
+                dialog.dismiss();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTransactionDatabase.child(post_key).removeValue();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void updateGastoItem(){
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater=LayoutInflater.from(getActivity());
+        View myview=inflater.inflate(R.layout.update_gasto_item, null);
+        mydialog.setView(myview);
+
+        edtDescription=myview.findViewById(R.id.description_edt);
+        edtAmount=myview.findViewById(R.id.amount_edt);
+        edtDate=myview.findViewById(R.id.data_edt);
+        edtCategory=myview.findViewById(R.id.category_edt);
+
+        btnUpdate=myview.findViewById(R.id.btn_atualizar);
+        btnDelete=myview.findViewById(R.id.btn_deletar);
+
+        final AlertDialog dialog=mydialog.create();
+
+        //Set data to edit text..
+        edtDescription.setText(description);
+        edtDescription.setSelection(description.length());
+
+        edtAmount.setText(String.valueOf(amount));
+        edtAmount.setSelection(String.valueOf(amount).length());
+
+        edtDate.setText(date);
+        edtDate.setSelection(date.length());
+
+        edtCategory.setText(category);
+        edtCategory.setSelection(category.length());
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Data to Server
+                description=edtDescription.getText().toString().trim();
+                date=edtDate.getText().toString().trim();
+                category=edtCategory.getText().toString().trim();
+                type="gasto";
 
                 String strAmount=String.valueOf(amount);
                 strAmount=edtAmount.getText().toString().trim();
