@@ -20,7 +20,6 @@ public class Transactions {
         this.type = type;
     }
 
-
     public String getId() {
         return id;
     }

@@ -29,10 +29,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
+
+    private static final int VIEW_TYPE_GASTO = 1;
+    private static final int VIEW_TYPE_GANHO = 2;
 
     //Floating button
     private FloatingActionButton fab_main_btn;
@@ -61,8 +66,25 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter adapter;
 
-    private static final int VIEW_TYPE_GASTO = 1;
-    private static final int VIEW_TYPE_GANHO = 2;
+    // For Update e Delete item
+    // Data item
+    private String description;
+    private int amount;
+    private String date;
+    private String category;
+    private String type;
+    private String post_key;
+
+    // Update editText
+    private EditText edtDescription;
+    private EditText edtAmount;
+    private EditText edtDate;
+    private EditText edtCategory;
+
+    //button for update and delete
+    private Button btnUpdate;
+    private Button btnDelete;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -218,11 +240,91 @@ public class HomeFragment extends Fragment {
                     ((GanhosViewHolder) holder).setGanhosAmount(model.getAmount());
                     ((GanhosViewHolder) holder).setGanhosDate(model.getDate());
                     ((GanhosViewHolder) holder).setGanhosCategory(model.getCategory());
+
+                    ((GanhosViewHolder) holder).mGanhosView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int pos=holder.getBindingAdapterPosition();
+                            post_key=getRef(pos).getKey();
+
+                            description=model.getDescription();
+                            amount=model.getAmount();
+                            date=model.getDate();
+                            category= model.getCategory();
+
+                            updateGanhoItem();
+                        }
+                    });
                 }
             }
+
+
+
+
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    private void updateGanhoItem(){
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater=LayoutInflater.from(getActivity());
+        View myview=inflater.inflate(R.layout.update_ganho_item, null);
+        mydialog.setView(myview);
+
+        edtDescription=myview.findViewById(R.id.description_edt);
+        edtAmount=myview.findViewById(R.id.amount_edt);
+        edtDate=myview.findViewById(R.id.data_edt);
+        edtCategory=myview.findViewById(R.id.category_edt);
+
+        btnUpdate=myview.findViewById(R.id.btn_atualizar);
+        btnDelete=myview.findViewById(R.id.btn_deletar);
+
+        final AlertDialog dialog=mydialog.create();
+
+        //Set data to edit text..
+        edtDescription.setText(description);
+        edtDescription.setSelection(description.length());
+
+        edtAmount.setText(String.valueOf(amount));
+        edtAmount.setSelection(String.valueOf(amount).length());
+
+        edtDate.setText(date);
+        edtDate.setSelection(date.length());
+
+        edtCategory.setText(category);
+        edtCategory.setSelection(category.length());
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Data to Server
+                description=edtDescription.getText().toString().trim();
+                date=edtDate.getText().toString().trim();
+                category=edtCategory.getText().toString().trim();
+                type="ganho";
+
+                String strAmount=String.valueOf(amount);
+                strAmount=edtAmount.getText().toString().trim();
+
+                int intAmount=Integer.parseInt(strAmount);
+
+                Transactions data=new Transactions(post_key, description, intAmount, date, category, type);
+                mTransactionDatabase.child(post_key).setValue(data);
+
+                dialog.dismiss();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTransactionDatabase.child(post_key).removeValue();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     private static class GastosViewHolder extends RecyclerView.ViewHolder{
