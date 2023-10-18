@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mangosapp.Model.Transactions;
@@ -20,6 +22,8 @@ public class StrategyFragment extends Fragment {
 
     //Floating button
     private FloatingActionButton fab_main_btn;
+    private ProgressBar progressBar;
+    private TextView textViewProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class StrategyFragment extends Fragment {
                 goalsDataInsert();
             }
         });
+
+        atualizarProgressBar(myview);
+
 
         return myview;
     }
@@ -70,6 +77,25 @@ public class StrategyFragment extends Fragment {
 
         dialog.show();
 
+    }
+
+    public void atualizarProgressBar(View myview){
+
+        // Suponha que progressBar seja a ProgressBar no seu layout
+        ProgressBar progressBar = myview.findViewById(R.id.progressBar);
+        TextView textViewProgressPercentage = myview.findViewById(R.id.textViewProgressPercentage);
+
+        int progressoAtual = 50;  // Altere para o valor atual de progresso
+        int valorTotal = 100;     // Altere para o valor total
+
+        // Atualize o progresso na barra de progresso
+        progressBar.setProgress(progressoAtual);
+
+        // Calcule a porcentagem de progresso
+        int porcentagem = (int) (((float) progressoAtual / valorTotal) * 100);
+
+        // Atualize o TextView com a porcentagem
+        textViewProgressPercentage.setText(porcentagem + "%");
     }
 
 }
