@@ -45,7 +45,7 @@ public class InsightFragment extends Fragment {
         PieDataSet dataSet = new PieDataSet(entries, "Gastos por Categoria");
 
         // Configuração das cores
-        dataSet.setColors(Color.rgb(255, 0, 0), Color.rgb(0, 255, 0), Color.rgb(0, 0, 255));
+        dataSet.setColors(Color.rgb(200, 50, 50), Color.rgb(50, 200, 50), Color.rgb(50, 50, 200));
 
         // Crie o objeto de dados para o gráfico
         PieData pieData = new PieData(dataSet);
