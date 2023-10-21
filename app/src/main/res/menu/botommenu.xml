@@ -18,7 +18,7 @@
         android:title=""
         android:icon="@drawable/school_icon" />
 
-    <item android:id="@+id/person"
+    <item android:id="@+id/profile"
         android:title=""
         android:icon="@drawable/person_icon" />
 

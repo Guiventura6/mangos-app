@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private StrategyFragment strategyFragment;
     private EducationFragment educationFragment;
 
+    private ProfileFragment profileFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         insightFragment = new InsightFragment();
         strategyFragment = new StrategyFragment();
         educationFragment = new EducationFragment();
+        profileFragment = new ProfileFragment();
 
         setFragment(homeFragment);
 
@@ -81,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         setFragment(educationFragment);
                         return true;
 
+                    case R.id.profile:
+                        setFragment(profileFragment);
+                        return true;
                     default:
                         return false;
                 }
@@ -125,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.school:
                 fragment=new EducationFragment();
+                break;
+
+            case R.id.profile:
+                fragment=new ProfileFragment();
                 break;
 
             case R.id.logout:

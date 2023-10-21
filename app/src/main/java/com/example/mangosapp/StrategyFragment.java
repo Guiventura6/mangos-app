@@ -44,7 +44,7 @@ public class StrategyFragment extends Fragment {
             }
         });
 
-        atualizarProgressBar(myview);
+        //atualizarProgressBar(myview);
 
 
         return myview;
