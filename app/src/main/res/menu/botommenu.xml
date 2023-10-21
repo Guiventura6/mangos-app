@@ -18,4 +18,8 @@
         android:title=""
         android:icon="@drawable/school_icon" />
 
+    <item android:id="@+id/person"
+        android:title=""
+        android:icon="@drawable/person_icon" />
+
 </menu>
