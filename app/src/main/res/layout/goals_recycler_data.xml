@@ -60,7 +60,7 @@
             android:textSize="14sp"/>
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progress_bar"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             android:id="@+id/textViewProgressPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/progressBar"
+            android:layout_below="@id/progress_bar"
             android:layout_gravity="center"
             android:text="50%"
             android:textSize="16sp"/>

@@ -23,7 +23,7 @@ public class StrategyFragment extends Fragment {
     //Floating button
     private FloatingActionButton fab_main_btn;
     private ProgressBar progressBar;
-    private TextView textViewProgress;
+    TextView textViewProgressPercentage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class StrategyFragment extends Fragment {
         //Connect floating button to layout
         fab_main_btn=myview.findViewById(R.id.fb_main_plus_btn);
 
+
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +45,22 @@ public class StrategyFragment extends Fragment {
             }
         });
 
-        //atualizarProgressBar(myview);
+        // Progress Bar
+        /*progress bar
+        progressBar=myview.findViewById(R.id.progress_bar);
+        textViewProgressPercentage=myview.findViewById(R.id.textViewProgressPercentage);
+
+        int progressoAtual = 50;  // Altere para o valor atual de progresso
+        int valorTotal = 100;     // Altere para o valor total
+
+        // Atualize o progresso na barra de progresso
+        progressBar.setProgress(progressoAtual);
+
+        // Calcule a porcentagem de progresso
+        int porcentagem = (int) (((float) progressoAtual / valorTotal) * 100);
+
+        // Atualize o TextView com a porcentagem
+        textViewProgressPercentage.setText(porcentagem + "%");*/
 
 
         return myview;
@@ -78,24 +94,4 @@ public class StrategyFragment extends Fragment {
         dialog.show();
 
     }
-
-    public void atualizarProgressBar(View myview){
-
-        // Suponha que progressBar seja a ProgressBar no seu layout
-        ProgressBar progressBar = myview.findViewById(R.id.progressBar);
-        TextView textViewProgressPercentage = myview.findViewById(R.id.textViewProgressPercentage);
-
-        int progressoAtual = 50;  // Altere para o valor atual de progresso
-        int valorTotal = 100;     // Altere para o valor total
-
-        // Atualize o progresso na barra de progresso
-        progressBar.setProgress(progressoAtual);
-
-        // Calcule a porcentagem de progresso
-        int porcentagem = (int) (((float) progressoAtual / valorTotal) * 100);
-
-        // Atualize o TextView com a porcentagem
-        textViewProgressPercentage.setText(porcentagem + "%");
-    }
-
 }
