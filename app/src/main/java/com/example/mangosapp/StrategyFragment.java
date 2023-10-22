@@ -15,8 +15,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mangosapp.Model.Goals;
 import com.example.mangosapp.Model.Transactions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 public class StrategyFragment extends Fragment {
 
@@ -24,6 +30,11 @@ public class StrategyFragment extends Fragment {
     private FloatingActionButton fab_main_btn;
     private ProgressBar progressBar;
     TextView textViewProgressPercentage;
+
+    // Conecte Firebase
+    private DatabaseReference mGoalsDatabase;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,9 @@ public class StrategyFragment extends Fragment {
 
         //Connect floating button to layout
         fab_main_btn=myview.findViewById(R.id.fb_main_plus_btn);
+
+        // Firebase Database
+        mGoalsDatabase = FirebaseDatabase.getInstance().getReference().child("Goals");
 
 
         fab_main_btn.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +89,55 @@ public class StrategyFragment extends Fragment {
         final AlertDialog dialog=mydialog.create();
         dialog.setCancelable(false);
 
+        final EditText title=myview.findViewById(R.id.title_edt);
+        final EditText reason=myview.findViewById(R.id.reason_edt);
+        final EditText total_amount=myview.findViewById(R.id.amount_edt);
+        final EditText data=myview.findViewById(R.id.data_edt);
+        final EditText current_amount=myview.findViewById(R.id.current_amount_edt);
+
         Button btnSave=myview.findViewById(R.id.btn_save);
         Button btnCancel=myview.findViewById(R.id.btn_cancel);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String txtTitle=title.getText().toString().trim();
+                String txtReason=reason.getText().toString().trim();
+                String txtTotalAmount=total_amount.getText().toString().trim();
+                String txtDeadline=data.getText().toString().trim();
+                String txtCurrentAmount=current_amount.getText().toString().trim();
+
+                if (TextUtils.isEmpty(txtTitle)){
+                    title.setError("Required Field..");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(txtReason)){
+                    reason.setError("Required Field..");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(txtDeadline)){
+                    data.setError("Required Field..");
+                    return;
+                }
+                if (TextUtils.isEmpty(txtCurrentAmount)){
+                    current_amount.setError("Required Field..");
+                    return;
+                }
+
+                int intTotalAmount=Integer.parseInt(txtTotalAmount);
+                int intCurrentAmount=Integer.parseInt(txtTotalAmount);
+
+
+                String id= mGoalsDatabase.push().getKey();
+                String created= DateFormat.getDateInstance().format(new Date());
+
+                Goals data=new Goals(id, txtTitle, txtReason, created, txtDeadline, intCurrentAmount, intTotalAmount);
+
+                mGoalsDatabase.child(id).setValue(data);
+                Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
+
                 dialog.dismiss();
             }
         });

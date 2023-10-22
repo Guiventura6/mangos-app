@@ -7,7 +7,7 @@ public class Goals {
     private String reason;
     private String created;
     private String deadline;
-    private int amount;
+    private int current_amount;
     private int total_amount;
 
     public Goals() {}
@@ -18,7 +18,7 @@ public class Goals {
         this.reason = reason;
         this.created = created;
         this.deadline = deadline;
-        this.amount = amount;
+        this.current_amount = amount;
         this.total_amount = total_amount;
     }
 
@@ -62,12 +62,12 @@ public class Goals {
         this.deadline = deadline;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getCurrent_amount() {
+        return current_amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setCurrent_amount(int current_amount) {
+        this.current_amount = current_amount;
     }
 
     public int getTotal_amount() {

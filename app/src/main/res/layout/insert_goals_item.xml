@@ -356,7 +356,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/category_edt" />
+                            android:id="@+id/current_amount_edt" />
 
                     </RelativeLayout>
 
