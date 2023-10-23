@@ -23,8 +23,11 @@ import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -236,12 +239,11 @@ public class StrategyFragment extends Fragment {
 
     }
 
-    /*
-    public void updateGoalItem() {
+    public void updateGoalItem(String goalId) {
 
         AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=LayoutInflater.from(getActivity());
-        View myview=inflater.inflate(R.layout.insert_goals_item, null);
+        View myview=inflater.inflate(R.layout.update_goal_item, null);
         mydialog.setView(myview);
 
         final AlertDialog dialog=mydialog.create();
@@ -253,10 +255,10 @@ public class StrategyFragment extends Fragment {
         final EditText data=myview.findViewById(R.id.data_edt);
         final EditText current_amount=myview.findViewById(R.id.current_amount_edt);
 
-        Button btnSave=myview.findViewById(R.id.btn_save);
-        Button btnCancel=myview.findViewById(R.id.btn_cancel);
+        Button btnUpdate=myview.findViewById(R.id.btn_update);
+        Button btnDelete=myview.findViewById(R.id.btn_deletar);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String txtTitle=title.getText().toString().trim();
@@ -287,27 +289,28 @@ public class StrategyFragment extends Fragment {
                 int intTotalAmount=Integer.parseInt(txtTotalAmount);
                 int intCurrentAmount=Integer.parseInt(txtCurrentAmount);
 
+                DatabaseReference goalRef = mGoalsDatabase.child(goalId);
 
-                String id= mGoalsDatabase.push().getKey();
-                String created= DateFormat.getDateInstance().format(new Date());
+                // Mantenha a data de criação original
+                goalRef.child("title").setValue(txtTitle);
+                goalRef.child("reason").setValue(txtReason);
+                goalRef.child("total_amount").setValue(intTotalAmount);
+                goalRef.child("deadline").setValue(txtDeadline);
+                goalRef.child("current_amount").setValue(intCurrentAmount);
 
-                Goals data=new Goals(id, txtTitle, txtReason, created, txtDeadline, intCurrentAmount, intTotalAmount);
-
-                mGoalsDatabase.child(id).setValue(data);
-                Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Dados Atualizados", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
             }
         });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mGoalsDatabase.child(goalId).removeValue();
                 dialog.dismiss();
             }
         });
 
         dialog.show();
-
     }
-    */
 }
