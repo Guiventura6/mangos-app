@@ -93,7 +93,7 @@ public class EducationFragment extends Fragment {
         List<String> habitos_financeiros_e_reflexoes = new ArrayList<>();
         habitos_financeiros_e_reflexoes.add("Bons Hábitos");
         habitos_financeiros_e_reflexoes.add("Maus Hábitos: Como mudar seus hábitos");
-        habitos_financeiros_e_reflexoes.add("Cómo cambiar tus hábitos");
+        habitos_financeiros_e_reflexoes.add("Como mudar seus hábitos");
         habitos_financeiros_e_reflexoes.add("Reflexões");
         habitos_financeiros_e_reflexoes.add("Minimalismo");
         habitos_financeiros_e_reflexoes.add("Vida de Sucesso");
