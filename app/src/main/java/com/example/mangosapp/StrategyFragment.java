@@ -44,6 +44,14 @@ public class StrategyFragment extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter adapter;
 
+    //Update and Delete Item Goal
+    private String title;
+    private String reason;
+    private int total_amount;
+    private String deadline;
+    private int current_amount;
+    private String post_key;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +112,22 @@ public class StrategyFragment extends Fragment {
                 holder.setGoalsDeadline(model.getDeadline());
                 holder.setGoalsCurrentAmount(model.getCurrent_amount());
                 holder.setGoalsProgressBar(model.getCurrent_amount(), model.getTotal_amount());
+
+                holder.mGastosView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int pos=holder.getBindingAdapterPosition();
+                        post_key=getRef(pos).getKey();
+
+                        title=model.getTitle();
+                        reason=model.getReason();
+                        total_amount=model.getTotal_amount();
+                        deadline=model.getDeadline();
+                        current_amount= model.getCurrent_amount();
+                        updateGoalItem(post_key);
+                    }
+                });
+
             }
         };
         recyclerView.setAdapter(adapter);
@@ -247,42 +271,57 @@ public class StrategyFragment extends Fragment {
         mydialog.setView(myview);
 
         final AlertDialog dialog=mydialog.create();
-        dialog.setCancelable(false);
 
-        final EditText title=myview.findViewById(R.id.title_edt);
-        final EditText reason=myview.findViewById(R.id.reason_edt);
-        final EditText total_amount=myview.findViewById(R.id.total_amount_edt);
-        final EditText data=myview.findViewById(R.id.data_edt);
-        final EditText current_amount=myview.findViewById(R.id.current_amount_edt);
+        final EditText edtTitle=myview.findViewById(R.id.title_edt);
+        final EditText edtReason=myview.findViewById(R.id.reason_edt);
+        final EditText edtTotal_amount=myview.findViewById(R.id.total_amount_edt);
+        final EditText edtDeadline=myview.findViewById(R.id.data_edt);
+        final EditText edtCurrent_amount=myview.findViewById(R.id.current_amount_edt);
 
         Button btnUpdate=myview.findViewById(R.id.btn_update);
         Button btnDelete=myview.findViewById(R.id.btn_deletar);
 
+        //Set data to edit text..
+        edtTitle.setText(title);
+        edtTitle.setSelection(title.length());
+
+        edtReason.setText(reason);
+        edtReason.setSelection(reason.length());
+
+        edtTotal_amount.setText(String.valueOf(total_amount));
+        edtTotal_amount.setSelection(String.valueOf(total_amount).length());
+
+        edtDeadline.setText(deadline);
+        edtDeadline.setSelection(deadline.length());
+
+        edtCurrent_amount.setText(String.valueOf(current_amount));
+        edtCurrent_amount.setSelection(String.valueOf(current_amount).length());
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtTitle=title.getText().toString().trim();
-                String txtReason=reason.getText().toString().trim();
-                String txtTotalAmount=total_amount.getText().toString().trim();
-                String txtDeadline=data.getText().toString().trim();
-                String txtCurrentAmount=current_amount.getText().toString().trim();
+                String txtTitle=edtTitle.getText().toString().trim();
+                String txtReason=edtReason.getText().toString().trim();
+                String txtTotalAmount=edtTotal_amount.getText().toString().trim();
+                String txtDeadline=edtDeadline.getText().toString().trim();
+                String txtCurrentAmount=edtCurrent_amount.getText().toString().trim();
 
                 if (TextUtils.isEmpty(txtTitle)){
-                    title.setError("Required Field..");
+                    edtTitle.setError("Required Field..");
                     return;
                 }
 
                 if (TextUtils.isEmpty(txtReason)){
-                    reason.setError("Required Field..");
+                    edtReason.setError("Required Field..");
                     return;
                 }
 
                 if (TextUtils.isEmpty(txtDeadline)){
-                    data.setError("Required Field..");
+                    edtDeadline.setError("Required Field..");
                     return;
                 }
                 if (TextUtils.isEmpty(txtCurrentAmount)){
-                    current_amount.setError("Required Field..");
+                    edtCurrent_amount.setError("Required Field..");
                     return;
                 }
 
