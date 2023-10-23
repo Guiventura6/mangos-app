@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <!-- Imagem de perfil -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/person_icon"
+        android:layout_gravity="center"
+        android:contentDescription="Imagem de perfil" />
 
-</FrameLayout>
+    <!-- Nome do usuário -->
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Usuário"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:paddingTop="8dp" />
+
+    <!-- Informações adicionais do perfil -->
+    <TextView
+        android:id="@+id/profile_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informações adicionais do perfil"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:paddingTop="8dp" />
+
+    <!-- Botão para editar perfil -->
+    <Button
+        android:id="@+id/edit_profile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Perfil"
+        android:layout_gravity="center"
+        android:paddingTop="16dp" />
+
+    <!-- Outros elementos, como listas de posts, seguidores, etc., podem ser adicionados aqui -->
+
+</LinearLayout>
