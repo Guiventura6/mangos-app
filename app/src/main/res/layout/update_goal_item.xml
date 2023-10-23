@@ -31,15 +31,15 @@
                         android:layout_height="30dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:textColor="@color/gastos"
+                        android:textColor="@color/appbar"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:text="Gasto" />
+                        android:text="Objetivo" />
 
                 </RelativeLayout>
 
             </LinearLayout>
 
-            <!-- Descrição -->
+            <!-- Titulo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Descrição" />
+                            android:text="Titulo" />
 
                     </RelativeLayout>
 
@@ -96,7 +96,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/description_edt" />
+                            android:id="@+id/title_edt" />
 
                     </RelativeLayout>
 
@@ -104,7 +104,72 @@
 
             </LinearLayout>
 
-            <!-- Valor -->
+            <!-- Motivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/reason_icon"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Motivo" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/reason_edt" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Valor Total-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,7 +206,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Valor" />
+                            android:text="Valor Total" />
 
                     </RelativeLayout>
 
@@ -161,7 +226,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/amount_edt" />
+                            android:id="@+id/total_amount_edt" />
 
                     </RelativeLayout>
 
@@ -234,7 +299,7 @@
 
             </LinearLayout>
 
-            <!-- Categoria -->
+            <!-- Valor Atual -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -256,7 +321,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/label_icon"/>
+                            android:src="@drawable/cached_icon"/>
 
                     </RelativeLayout>
 
@@ -271,7 +336,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Categoria" />
+                            android:text="Valor Atual" />
 
                     </RelativeLayout>
 
@@ -291,7 +356,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/category_edt" />
+                            android:id="@+id/current_amount_edt" />
 
                     </RelativeLayout>
 
@@ -316,7 +381,7 @@
                         android:text="DELETAR"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white"
-                        android:background="@color/gastos"
+                        android:background="@color/appbar"
                         android:id="@+id/btn_deletar"
                         android:layout_height="wrap_content"/>
 
@@ -334,8 +399,8 @@
                         android:text="ATUALIZAR"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@android:color/white"
-                        android:background="@color/gastos"
-                        android:id="@+id/btn_atualizar"
+                        android:background="@color/appbar"
+                        android:id="@+id/btn_update"
                         android:layout_height="wrap_content"/>
 
                 </RelativeLayout>

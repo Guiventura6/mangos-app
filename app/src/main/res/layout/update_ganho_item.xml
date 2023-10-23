@@ -33,7 +33,7 @@
                         android:gravity="center"
                         android:textColor="@color/ganhos"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:text="Novo Gasto" />
+                        android:text="Ganho" />
 
                 </RelativeLayout>
 

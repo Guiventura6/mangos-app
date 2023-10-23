@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mangosapp.Model.Goals;
+import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -234,4 +235,79 @@ public class StrategyFragment extends Fragment {
         dialog.show();
 
     }
+
+    /*
+    public void updateGoalItem() {
+
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater=LayoutInflater.from(getActivity());
+        View myview=inflater.inflate(R.layout.insert_goals_item, null);
+        mydialog.setView(myview);
+
+        final AlertDialog dialog=mydialog.create();
+        dialog.setCancelable(false);
+
+        final EditText title=myview.findViewById(R.id.title_edt);
+        final EditText reason=myview.findViewById(R.id.reason_edt);
+        final EditText total_amount=myview.findViewById(R.id.total_amount_edt);
+        final EditText data=myview.findViewById(R.id.data_edt);
+        final EditText current_amount=myview.findViewById(R.id.current_amount_edt);
+
+        Button btnSave=myview.findViewById(R.id.btn_save);
+        Button btnCancel=myview.findViewById(R.id.btn_cancel);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txtTitle=title.getText().toString().trim();
+                String txtReason=reason.getText().toString().trim();
+                String txtTotalAmount=total_amount.getText().toString().trim();
+                String txtDeadline=data.getText().toString().trim();
+                String txtCurrentAmount=current_amount.getText().toString().trim();
+
+                if (TextUtils.isEmpty(txtTitle)){
+                    title.setError("Required Field..");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(txtReason)){
+                    reason.setError("Required Field..");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(txtDeadline)){
+                    data.setError("Required Field..");
+                    return;
+                }
+                if (TextUtils.isEmpty(txtCurrentAmount)){
+                    current_amount.setError("Required Field..");
+                    return;
+                }
+
+                int intTotalAmount=Integer.parseInt(txtTotalAmount);
+                int intCurrentAmount=Integer.parseInt(txtCurrentAmount);
+
+
+                String id= mGoalsDatabase.push().getKey();
+                String created= DateFormat.getDateInstance().format(new Date());
+
+                Goals data=new Goals(id, txtTitle, txtReason, created, txtDeadline, intCurrentAmount, intTotalAmount);
+
+                mGoalsDatabase.child(id).setValue(data);
+                Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
+
+                dialog.dismiss();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+    }
+    */
 }
