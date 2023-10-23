@@ -226,7 +226,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/amount_edt" />
+                            android:id="@+id/total_amount_edt" />
 
                     </RelativeLayout>
 

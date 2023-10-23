@@ -16,7 +16,7 @@
 
         <!-- Título do objetivo -->
         <TextView
-            android:id="@+id/textViewTitle"
+            android:id="@+id/title_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meu Objetivo"
@@ -24,7 +24,7 @@
 
         <!-- Data para completar o objetivo -->
         <TextView
-            android:id="@+id/textViewDate"
+            android:id="@+id/deadline_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -33,28 +33,28 @@
 
         <!-- Motivo do objetivo -->
         <TextView
-            android:id="@+id/textViewReason"
+            android:id="@+id/reason_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewTitle"
+            android:layout_below="@id/title_txt_goals"
             android:text="Motivo do objetivo"
             android:textSize="16sp"/>
 
         <!-- Valor atual -->
         <TextView
-            android:id="@+id/textViewCurrentValue"
+            android:id="@+id/current_amount_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewReason"
+            android:layout_below="@id/reason_txt_goals"
             android:text="Valor atual: R$ 50,00"
             android:textSize="14sp"/>
 
         <!-- Valor total -->
         <TextView
-            android:id="@+id/textViewTotalValue"
+            android:id="@+id/total_amount_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewReason"
+            android:layout_below="@id/reason_txt_goals"
             android:layout_alignParentEnd="true"
             android:text="Valor total: R$ 100,00"
             android:textSize="14sp"/>
@@ -64,14 +64,14 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewCurrentValue"
+            android:layout_below="@id/current_amount_txt_goals"
             android:layout_marginTop="10dp"
             android:max="100"
             android:progress="50" />
 
         <!-- TextView para exibir a porcentagem de progresso -->
         <TextView
-            android:id="@+id/textViewProgressPercentage"
+            android:id="@+id/progress_percentage_txt_goals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/progress_bar"

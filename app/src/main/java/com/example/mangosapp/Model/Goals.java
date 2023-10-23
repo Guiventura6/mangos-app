@@ -10,15 +10,16 @@ public class Goals {
     private int current_amount;
     private int total_amount;
 
-    public Goals() {}
+    public Goals() {
+    }
 
-    public Goals(String id, String title, String reason, String created, String deadline, int amount, int total_amount) {
+    public Goals(String id, String title, String reason, String created, String deadline, int current_amount, int total_amount) {
         this.id = id;
         this.title = title;
         this.reason = reason;
         this.created = created;
         this.deadline = deadline;
-        this.current_amount = amount;
+        this.current_amount = current_amount;
         this.total_amount = total_amount;
     }
 
