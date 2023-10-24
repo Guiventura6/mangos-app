@@ -153,7 +153,9 @@ public class InsightFragment extends Fragment {
                 // Crie um conjunto de dados com as entradas e aplique as cores personalizadas
                 BarDataSet dataSet = new BarDataSet(entries, "Gastos por Categoria");
                 // Configuração das cores
-                dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                if (getContext() != null) {
+                    dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                }
 
                 // Remova os valores do lado direito do gráfico
                 dataSet.setDrawValues(false);
