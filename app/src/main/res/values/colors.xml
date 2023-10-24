@@ -15,4 +15,10 @@
     <color name="ganhos">#00C853</color>
     <color name="saldo_total">#808080</color>
 
+    <!-- Grafico -->
+    <color name="cor1">#FFAB00</color>
+    <color name="cor2">#FF5733</color>
+    <color name="cor3">#FFC300</color>
+
+
 </resources>
