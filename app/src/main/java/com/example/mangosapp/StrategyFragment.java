@@ -47,9 +47,9 @@ public class StrategyFragment extends Fragment {
     //Update and Delete Item Goal
     private String title;
     private String reason;
-    private int total_amount;
+    private double total_amount;
     private String deadline;
-    private int current_amount;
+    private double current_amount;
     private String post_key;
 
     @Override
@@ -153,10 +153,10 @@ public class StrategyFragment extends Fragment {
             mReason.setText(reason);
         }
 
-        void setGoalsTotalAmount(int amount){
+        void setGoalsTotalAmount(double amount){
             TextView mTotalAmount=mGastosView.findViewById(R.id.total_amount_txt_goals);
             String strAmount=String.valueOf(amount);
-            mTotalAmount.setText("R$ " + strAmount+ ",00");
+            mTotalAmount.setText("R$ " + strAmount);
         }
 
         void setGoalsDeadline(String date){
@@ -164,19 +164,19 @@ public class StrategyFragment extends Fragment {
             mDeadLine.setText(date);
         }
 
-        void setGoalsCurrentAmount(int amount){
+        void setGoalsCurrentAmount(double amount){
             TextView mCurrentAmount=mGastosView.findViewById(R.id.current_amount_txt_goals);
             String strCurrentAmount=String.valueOf(amount);
-            mCurrentAmount.setText("R$ " + strCurrentAmount+ ",00");
+            mCurrentAmount.setText("R$ " + strCurrentAmount);
         }
 
-        void setGoalsProgressBar(int current_amount, int total_amount){
+        void setGoalsProgressBar(double current_amount, double total_amount){
             // Progress Bar
             ProgressBar progressBar = mGastosView.findViewById(R.id.progress_bar);
             TextView progressPercentage=mGastosView.findViewById(R.id.progress_percentage_txt_goals);
 
-            int progressoAtual = current_amount;
-            int valorTotal = total_amount;
+            double progressoAtual = current_amount;
+            double valorTotal = total_amount;
 
             // Calcule a porcentagem de progresso
             int porcentagem = (int) (((float) progressoAtual / valorTotal) * 100);
@@ -325,8 +325,8 @@ public class StrategyFragment extends Fragment {
                     return;
                 }
 
-                int intTotalAmount=Integer.parseInt(txtTotalAmount);
-                int intCurrentAmount=Integer.parseInt(txtCurrentAmount);
+                double intTotalAmount=Double.parseDouble(txtTotalAmount);
+                double intCurrentAmount=Double.parseDouble(txtCurrentAmount);
 
                 DatabaseReference goalRef = mGoalsDatabase.child(goalId);
 
