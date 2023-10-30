@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
     // For Update e Delete item
     // Data item
     private String description;
-    private int amount;
+    private double amount;
     private String date;
     private String category;
     private String type;
@@ -322,9 +322,9 @@ public class HomeFragment extends Fragment {
                 String strAmount=String.valueOf(amount);
                 strAmount=edtAmount.getText().toString().trim();
 
-                int intAmount=Integer.parseInt(strAmount);
+                double doubleAmount=Double.parseDouble(strAmount);
 
-                Transactions data=new Transactions(post_key, description, intAmount, date, category, type);
+                Transactions data=new Transactions(post_key, description, doubleAmount, date, category, type);
                 mTransactionDatabase.child(post_key).setValue(data);
 
                 dialog.dismiss();
@@ -383,9 +383,9 @@ public class HomeFragment extends Fragment {
                 String strAmount=String.valueOf(amount);
                 strAmount=edtAmount.getText().toString().trim();
 
-                int intAmount=Integer.parseInt(strAmount);
+                double doubleAmount=Double.parseDouble(strAmount);
 
-                Transactions data=new Transactions(post_key, description, intAmount, date, category, type);
+                Transactions data=new Transactions(post_key, description, doubleAmount, date, category, type);
                 mTransactionDatabase.child(post_key).setValue(data);
 
                 dialog.dismiss();
@@ -417,10 +417,10 @@ public class HomeFragment extends Fragment {
             mDescription.setText(description);
         }
 
-        void setGastosAmount(int amount){
+        void setGastosAmount(double amount){
             TextView mAmount=mGastosView.findViewById(R.id.amount_txt_gastos);
             String strAmount=String.valueOf(amount);
-            mAmount.setText("-R$ " + strAmount+ ",00");
+            mAmount.setText("-R$ " + strAmount);
         }
 
         void setGastosDate(String date){
@@ -449,10 +449,10 @@ public class HomeFragment extends Fragment {
             mDescription.setText(description);
         }
 
-        void setGanhosAmount(int amount){
+        void setGanhosAmount(double amount){
             TextView mAmount=mGanhosView.findViewById(R.id.amount_txt_ganhos);
             String strAmount=String.valueOf(amount);
-            mAmount.setText("+R$ " + strAmount+ ",00");
+            mAmount.setText("+R$ " + strAmount);
         }
 
         void setGanhosDate(String date){
@@ -552,7 +552,7 @@ public class HomeFragment extends Fragment {
                     return;
                 }
 
-                int intAmount=Integer.parseInt(txtAmount);
+                double doubleAmount=Double.parseDouble(txtAmount);
 
                 if (TextUtils.isEmpty(txtData)){
                     data.setError("Required Field..");
@@ -567,7 +567,7 @@ public class HomeFragment extends Fragment {
                 String type="gasto";
                 // String mDate= DateFormat.getInstance().format(new Date());
 
-                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory, type);
+                Transactions data=new Transactions(id, txtDescription, doubleAmount, txtData, txtCategory, type);
 
                 mTransactionDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
@@ -628,7 +628,7 @@ public class HomeFragment extends Fragment {
                     return;
                 }
 
-                int intAmount=Integer.parseInt(txtAmount);
+                double doubleAmount=Double.parseDouble(txtAmount);
 
                 if (TextUtils.isEmpty(txtData)){
                     data.setError("Required Field..");
@@ -642,7 +642,7 @@ public class HomeFragment extends Fragment {
                 String id= mTransactionDatabase.push().getKey();
                 String type="ganho";
 
-                Transactions data=new Transactions(id, txtDescription, intAmount, txtData, txtCategory, type);
+                Transactions data=new Transactions(id, txtDescription, doubleAmount, txtData, txtCategory, type);
 
                 mTransactionDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();

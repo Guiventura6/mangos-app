@@ -4,14 +4,14 @@ public class Transactions {
 
     private String id;
     private String description;
-    private int amount;
+    private double amount;
     private String date;
     private String category;
     private String type;
 
     public Transactions(){}
 
-    public Transactions(String id, String description, int amount, String date, String category, String type) {
+    public Transactions(String id, String description, double amount, String date, String category, String type) {
         this.id = id;
         this.description = description;
         this.amount = amount;
@@ -36,11 +36,11 @@ public class Transactions {
         this.description = description;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
