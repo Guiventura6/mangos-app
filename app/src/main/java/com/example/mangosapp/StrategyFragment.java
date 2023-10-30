@@ -237,14 +237,14 @@ public class StrategyFragment extends Fragment {
                     return;
                 }
 
-                int intTotalAmount=Integer.parseInt(txtTotalAmount);
-                int intCurrentAmount=Integer.parseInt(txtCurrentAmount);
+                double doubleTotalAmount=Double.parseDouble(txtTotalAmount);
+                double doubleCurrentAmount=Double.parseDouble(txtCurrentAmount);
 
 
                 String id= mGoalsDatabase.push().getKey();
                 String created= DateFormat.getDateInstance().format(new Date());
 
-                Goals data=new Goals(id, txtTitle, txtReason, created, txtDeadline, intCurrentAmount, intTotalAmount);
+                Goals data=new Goals(id, txtTitle, txtReason, created, txtDeadline, doubleCurrentAmount, doubleTotalAmount);
 
                 mGoalsDatabase.child(id).setValue(data);
                 Toast.makeText(getActivity(), "Dados Adicionados", Toast.LENGTH_SHORT).show();
