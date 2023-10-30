@@ -1,5 +1,6 @@
 package com.example.mangosapp;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class StrategyFragment extends Fragment {
@@ -51,6 +54,9 @@ public class StrategyFragment extends Fragment {
     private String deadline;
     private double current_amount;
     private String post_key;
+
+    // Selecionando a Data do objetivo
+    private EditText editTextDate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +90,6 @@ public class StrategyFragment extends Fragment {
                 goalsDataInsert();
             }
         });
-
 
         return myview;
     }
@@ -209,6 +214,13 @@ public class StrategyFragment extends Fragment {
         Button btnSave=myview.findViewById(R.id.btn_save);
         Button btnCancel=myview.findViewById(R.id.btn_cancel);
 
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(data);
+            }
+        });
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -261,6 +273,28 @@ public class StrategyFragment extends Fragment {
 
         dialog.show();
 
+    }
+
+    private void showDatePickerDialog(final EditText editTextDate) {
+
+        int year, month, day;
+
+        // Obtém a data atual
+        Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // Aqui você pode fazer algo com a data selecionada
+                String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                editTextDate.setText(selectedDate);
+            }
+        }, year, month, day);
+
+        datePickerDialog.show();
     }
 
     public void updateGoalItem(String goalId) {
