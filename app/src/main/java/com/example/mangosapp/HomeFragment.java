@@ -131,9 +131,9 @@ public class HomeFragment extends Fragment {
         mTransactionDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int saldo=0;
-                int gastos=0;
-                int ganhos=0;
+                double saldo=0.0;
+                double gastos=0.0;
+                double ganhos=0.0;
 
                 for (DataSnapshot mysnap:snapshot.getChildren()){
                     Transactions data=mysnap.getValue(Transactions.class);
@@ -147,16 +147,16 @@ public class HomeFragment extends Fragment {
 
                 String str_gastos=String.valueOf(gastos);
                 String str_ganhos=String.valueOf(ganhos);
-                total_gastos.setText("-R$ "+str_gastos+",00");
-                total_ganhos.setText("+R$ "+str_ganhos+",00");
+                total_gastos.setText("-R$ "+str_gastos);
+                total_ganhos.setText("+R$ "+str_ganhos);
 
                 saldo = ganhos - gastos;
                 String str_saldo=String.valueOf(saldo);
                 if (saldo < 0){
-                    total_saldo.setText("R$ "+str_saldo+",00");
+                    total_saldo.setText("R$ "+str_saldo);
                     total_saldo.setTextColor(ContextCompat.getColor(getContext(), R.color.gastos));
                 } else {
-                    total_saldo.setText("R$ "+str_saldo+",00");
+                    total_saldo.setText("R$ "+str_saldo);
                     total_saldo.setTextColor(ContextCompat.getColor(getContext(), R.color.ganhos));
                 }
             }
