@@ -315,6 +315,13 @@ public class StrategyFragment extends Fragment {
         Button btnUpdate=myview.findViewById(R.id.btn_update);
         Button btnDelete=myview.findViewById(R.id.btn_deletar);
 
+        edtDeadline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(edtDeadline);
+            }
+        });
+
         //Set data to edit text..
         edtTitle.setText(title);
         edtTitle.setSelection(title.length());
