@@ -1,5 +1,6 @@
 package com.example.mangosapp;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -310,6 +313,14 @@ public class HomeFragment extends Fragment {
         edtCategory.setText(category);
         edtCategory.setSelection(category.length());
 
+        edtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(edtDate);
+            }
+        });
+
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -370,6 +381,13 @@ public class HomeFragment extends Fragment {
 
         edtCategory.setText(category);
         edtCategory.setSelection(category.length());
+
+        edtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(edtDate);
+            }
+        });
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -533,6 +551,14 @@ public class HomeFragment extends Fragment {
         Button btnSave=myview.findViewById(R.id.btn_save);
         Button btnCancel=myview.findViewById(R.id.btn_cancel);
 
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(data);
+            }
+        });
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -609,6 +635,14 @@ public class HomeFragment extends Fragment {
         Button btnSave=myview.findViewById(R.id.btn_save);
         Button btnCancel=myview.findViewById(R.id.btn_cancel);
 
+        data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(data);
+            }
+        });
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -663,6 +697,28 @@ public class HomeFragment extends Fragment {
 
         dialog.show();
 
+    }
+
+    private void showDatePickerDialog(final EditText editTextDate) {
+
+        int year, month, day;
+
+        // Obtém a data atual
+        Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // Aqui você pode fazer algo com a data selecionada
+                String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                editTextDate.setText(selectedDate);
+            }
+        }, year, month, day);
+
+        datePickerDialog.show();
     }
 
 }
