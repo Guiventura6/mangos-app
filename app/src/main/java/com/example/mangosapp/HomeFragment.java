@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,13 +32,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -70,6 +76,9 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter adapter;
 
+    //Meu app bar customizado
+    private Toolbar homeToolbar;
+
     // For Update e Delete item
     // Data item
     private String description;
@@ -89,6 +98,12 @@ public class HomeFragment extends Fragment {
     private Button btnUpdate;
     private Button btnDelete;
 
+    // Encontre o TextView no layout personalizado
+    private TextView monthTextView;
+    private Calendar currentMonthCalendar;
+
+    private Button nextMonthButton;
+    private Button previousMonthButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,6 +113,47 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myview = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        // CONFIGURANDO Filtro por Mês ********
+
+        // Inicialize o calendário com o mês atual
+        //currentMonthCalendar = Calendar.getInstance();
+
+        // Carregue as transações para o mês atual
+        // loadTransactionsForCurrentMonth();
+        /*
+        nextMonthButton = myview.findViewById(R.id.nextMonthButton);
+        Button previousMonthButton = myview.findViewById(R.id.previusMonthButton);
+
+        nextMonthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Avance para o próximo mês
+                currentMonthCalendar.add(Calendar.MONTH, 1);
+                // loadTransactionsForCurrentMonth();
+            }
+        });
+
+        previousMonthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Volte para o mês anterior
+                currentMonthCalendar.add(Calendar.MONTH, -1);
+                //loadTransactionsForCurrentMonth();
+            }
+        });
+        */
+        monthTextView = myview.findViewById(R.id.month_textview);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.getDefault());
+        String currentMonth = sdf.format(new Date());
+
+        monthTextView.setText(currentMonth.toUpperCase());
+
+        /*
+        // CONFIGURANDO Filtro por Mês ***********
+        */
 
         FadeOpen= AnimationUtils.loadAnimation(getActivity(), R.anim.fade_open);
         FadeClose=AnimationUtils.loadAnimation(getActivity(), R.anim.fade_close);
@@ -201,6 +257,7 @@ public class HomeFragment extends Fragment {
         });
 
         return myview;
+
     }
 
 
@@ -719,6 +776,44 @@ public class HomeFragment extends Fragment {
         }, year, month, day);
 
         datePickerDialog.show();
+    }
+
+    private void loadTransactionsForCurrentMonth() {
+        // Verifique se o adaptador não é nulo antes de atualizá-lo
+        if (adapter != null) {
+            // Obtenha o primeiro e o último dia do mês atual
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1; // Os meses no Firebase começam em 1 (janeiro é 1)
+            int lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+            String startOfMonth = String.format(Locale.getDefault(), "01/%02d/%d", month, year);
+            String endOfMonth = String.format(Locale.getDefault(), "%02d/%02d/%d", lastDay, month, year);
+
+            // Configure a consulta para buscar transações do mês atual
+            Query query = mTransactionDatabase.orderByChild("date")
+                    .startAt(startOfMonth)
+                    .endAt(endOfMonth);
+
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Resto do código para processar os dados
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Trate erros, se necessário
+                }
+            });
+
+            // Configure o adaptador com a nova consulta
+            FirebaseRecyclerOptions<Transactions> options = new FirebaseRecyclerOptions.Builder<Transactions>()
+                    .setQuery(query, Transactions.class)
+                    .build();
+
+            adapter.updateOptions(options); // Atualize o adaptador com as novas opções
+        }
     }
 
 }
