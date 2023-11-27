@@ -1,6 +1,7 @@
 package com.example.mangosapp;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -71,6 +74,7 @@ public class HomeFragment extends Fragment {
 
     // Conecte Firebase
     private DatabaseReference mTransactionDatabase;
+    private DatabaseReference mCategory;
 
     //Recycler view
     private RecyclerView recyclerView;
@@ -174,6 +178,7 @@ public class HomeFragment extends Fragment {
 
         // Firebase Database
         mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions");
+        mCategory = FirebaseDatabase.getInstance().getReference().child("Categories");
 
         //Conect Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);
@@ -615,6 +620,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Category
+        /*category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater=LayoutInflater.from(getActivity());
+                View myview=inflater.inflate(R.layout.insert_category_item, null);
+                mydialog.setView(myview);
+
+                final AlertDialog dialog=mydialog.create();
+
+                dialog.show();
+
+            }
+        });*/
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -699,6 +720,38 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //Category
+        /*
+        category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder categoryDialog = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = LayoutInflater.from(getActivity());
+                View categoryView = inflater.inflate(R.layout.insert_category_item, null);
+                categoryDialog.setView(categoryView);
+
+                //final AutoCompleteTextView autoCompleteCategoria = categoryView.findViewById(R.id.autoCompleteCategoria);
+                Button btnAdicionarCategoria = categoryView.findViewById(R.id.btnAdicionarCategoria);
+
+                // Configurar o Adapter para o AutoCompleteTextView (conforme o exemplo anterior)
+                //ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line);
+                //autoCompleteCategoria.setAdapter(categoriaAdapter);
+
+                // Obter categorias existentes do Firebase Firestore e adicionar ao Adapter (conforme o exemplo anterior)
+
+                btnAdicionarCategoria.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Quando o usuário clica em "Adicionar Categoria," você pode exibir um diálogo
+                        // para que eles insiram o nome da nova categoria. Por exemplo:
+                        //showNewCategoryDialog(categoriaAdapter);
+                    }
+                });
+
+                categoryDialog.show(); // Mostrar o diálogo de seleção de categoria
+            }
+        });
+        */
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -755,6 +808,33 @@ public class HomeFragment extends Fragment {
         dialog.show();
 
     }
+
+    //Category
+    /*private void showNewCategoryDialog(final ArrayAdapter<String> categoriaAdapter) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle("Adicionar Nova Categoria");
+
+        final EditText novaCategoriaEditText = new EditText(getActivity());
+        dialog.setView(novaCategoriaEditText);
+
+        dialog.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String novaCategoria = novaCategoriaEditText.getText().toString().trim();
+
+                // Verificar se o campo não está vazio
+                if (!novaCategoria.isEmpty()) {
+                    // Adicionar a nova categoria ao Firebase Firestore (conforme o exemplo anterior)
+
+                    // Atualizar o Adapter com a nova categoria
+                    categoriaAdapter.add(novaCategoria);
+                }
+            }
+        });
+
+        dialog.setNegativeButton("Cancelar", null);
+        dialog.show();
+    }*/
 
     private void showDatePickerDialog(final EditText editTextDate) {
 
