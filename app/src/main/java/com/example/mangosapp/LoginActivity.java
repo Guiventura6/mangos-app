@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             mDialog.dismiss();
-                            startActivity(new Intent(getApplicationContext(), HomeFragment.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             Toast.makeText(getApplicationContext(), "Login Successful..", Toast.LENGTH_SHORT).show();
                         } else {
                             mDialog.dismiss();
