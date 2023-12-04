@@ -31,6 +31,8 @@ import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,6 +75,7 @@ public class HomeFragment extends Fragment {
     private Animation FadeOpen, FadeClose;
 
     // Conecte Firebase
+    private FirebaseAuth mAuth;
     private DatabaseReference mTransactionDatabase;
     private DatabaseReference mCategory;
 
@@ -118,7 +121,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myview = inflater.inflate(R.layout.fragment_home, container, false);
 
-
         // CONFIGURANDO Filtro por Mês ********
 
         // Inicialize o calendário com o mês atual
@@ -148,6 +150,11 @@ public class HomeFragment extends Fragment {
             }
         });
         */
+
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser mUser= mAuth.getCurrentUser();
+        String uid=mUser.getUid();
+
         monthTextView = myview.findViewById(R.id.month_textview);
 
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM", Locale.getDefault());
@@ -177,8 +184,8 @@ public class HomeFragment extends Fragment {
         total_ganhos=myview.findViewById(R.id.home_txt_saldo_ganhos);
 
         // Firebase Database
-        mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions");
-        mCategory = FirebaseDatabase.getInstance().getReference().child("Categories");
+        mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions").child(uid);
+        mCategory = FirebaseDatabase.getInstance().getReference().child("Categories").child(uid);
 
         //Conect Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_home);

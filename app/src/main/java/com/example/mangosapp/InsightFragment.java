@@ -23,6 +23,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +40,7 @@ public class InsightFragment extends Fragment {
 
     // Conect with Firebase
     private DatabaseReference mTransactionDatabase;
+    private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +56,12 @@ public class InsightFragment extends Fragment {
         // Obtenha uma referência ao gráfico de barras no layout
         BarChart barChart = myview.findViewById(R.id.barChart);
 
-
         // Firebase Database
-        mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions");
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser mUser= mAuth.getCurrentUser();
+        String uid=mUser.getUid();
+
+        mTransactionDatabase = FirebaseDatabase.getInstance().getReference().child("Transactions").child(uid);
 
         // Buscando gastos por categoria Gráfico de Pizza
         /*

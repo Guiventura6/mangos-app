@@ -25,6 +25,8 @@ import com.example.mangosapp.Model.Transactions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +44,7 @@ public class StrategyFragment extends Fragment {
 
     // Conecte Firebase
     private DatabaseReference mGoalsDatabase;
+    private FirebaseAuth mAuth;
 
     //Recycler view
     private RecyclerView recyclerView;
@@ -71,7 +74,10 @@ public class StrategyFragment extends Fragment {
         fab_main_btn=myview.findViewById(R.id.fb_main_plus_btn);
 
         // Firebase Database
-        mGoalsDatabase = FirebaseDatabase.getInstance().getReference().child("Goals");
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser mUser= mAuth.getCurrentUser();
+        String uid=mUser.getUid();
+        mGoalsDatabase = FirebaseDatabase.getInstance().getReference().child("Goals").child(uid);
 
         //Conect Recycler
         recyclerView=myview.findViewById(R.id.recycler_id_strategy);
