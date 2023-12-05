@@ -39,6 +39,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
 
+        // Caso esteja logado o app entra automaticamente na Home
+        if (mAuth.getCurrentUser() !=null){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+
         mDialog=new ProgressDialog(this);
 
         loginDetails();

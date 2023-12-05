@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".subtema1">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtSubtema1Titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compreenda Melhor as Finanças"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtSubtema1Conteudo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aqui estão algumas dicas para compreender melhor as finanças:\n\n1. Crie um orçamento mensal para controlar seus gastos.\n2. Poupe uma porcentagem de sua renda para emergências.\n3. Entenda os princípios básicos de investimentos.\n4. Evite dívidas desnecessárias.\n5. Eduque-se sobre tópicos financeiros relevantes."
-        android:textSize="16sp"
-        android:layout_below="@id/txtSubtema1Titulo"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        <TextView
+            android:id="@+id/txtSubtema1Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Receitas e Despesas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imgSubtema1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/topico1"
+            android:layout_below="@id/txtSubtema1Titulo"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/txtSubtema1Conteudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A palavra receita pode ter vários sentidos: serve para descrever a forma de se fazer um bolo, dizer qual remédio se deve tomar e, no orçamento familiar, serve para descrever todas as rendas que compõem o dinheiro que você junta dentro de um mês.\n\nPara calcular suas receitas, você precisa somar todas as suas fontes de renda (pensão, vendas, comissões), ao seu salário, se você tiver.\n\nPodem fazer parte da sua receita, por exemplo:\n\n• Salário líquido;\n• Rendimento de investimentos;\n• Pagamentos por trabalhos esporádicos;\n• Rendimentos fixos de fontes diversas, como aposentadoria ou pensão;\n• Rendimentos de aluguéis ou dividendos de ações.\n\nJá a palavra despesa serve para explicar aquilo que você gasta. Para calcular todos os seus gastos, inclua as grandes despesas, como moradia, alimentação, transporte, saúde e lazer, e os pequenos gastos do dia a dia, que muitas vezes são deixados de lado.\n\nVeja alguns exemplos de despesa:\n\n• Gastos com aluguel ou parcela de imóvel;\n• Passagem de ônibus ou gasto com combustível do carro;\n• Compras do mês e refeições;\n• Ingressos para cinema, teatro ou passeios;\n• Matrícula e mensalidade da escola dos filhos ou faculdade;\n• Mensalidade da academia;\n• Mensalidades de serviços, como TV a cabo, energia elétrica, água e esgoto."
+            android:textSize="16sp"
+            android:layout_below="@id/imgSubtema1"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </RelativeLayout>
+</ScrollView>

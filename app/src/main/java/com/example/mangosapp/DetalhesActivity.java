@@ -30,11 +30,16 @@ public class DetalhesActivity extends AppCompatActivity {
 
     private Fragment getFragmentForSubtema(String subtema) {
         switch (subtema) {
-            case "Compreenda melhor as finanças":
+            case "Receitas e Despesas":
                 return new subtema1();
-            case "Ganhe mais dinheiro":
+            case "Juros e inflação":
                 return new subtema2();
-            // Adicione mais casos conforme necessário
+            case "Créditos":
+                return new subtema3();
+            case "Investimentos":
+                return new subtema4();
+            case "Contas":
+                return new subtema5();
             default:
                 // Pode retornar um Fragmento padrão ou null, dependendo dos requisitos
                 return null;

@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".subtema2">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="SUBTEMA 2" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/txtTituloSubtema2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Juros e Inflação"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Imagem do Subtema 2 -->
+        <ImageView
+            android:id="@+id/imgSubtema2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/juros_inflacao"
+            android:layout_below="@id/txtTituloSubtema2"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Conteúdo do Subtema 2 -->
+        <TextView
+            android:id="@+id/txtConteudoSubtema2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="É muito importante saber o que são os juros e como eles funcionam no dia a dia, pois isso ajuda na hora de pegar um empréstimo, escolher um investimento e também na hora de calcular uma conta em atraso.\n\nEm todos esses momentos, os juros estão presentes, fazendo toda a diferença nas contas pessoais e familiares.\n\nDe uma maneira simples, podemos dizer que juro é o valor pago para usar um dinheiro que não é seu. Funciona mais ou menos como um 'aluguel'.\n\nPor exemplo: se você pega um valor emprestado de alguém ou de um banco, você deve devolver o mesmo valor e, também, uma quantia extra, como pagamento pelo uso desse dinheiro que foi emprestado por algum tempo. Este valor extra que você deve pagar são os juros. Da mesma maneira, se você deixa um dinheiro no banco, aplicado por um tempo, você deve receber juros pelo uso que o banco faz do seu dinheiro.\n\nE o que são as taxas de juros?\n\nCada banco define as taxas de juros que vai praticar em cada operação, por exemplo, nos empréstimos, financiamentos ou investimentos. Essas taxas, porém, têm como base a taxa básica de juros do país, definida pelo COPOM - Comitê de Política Monetária, um órgão do Banco Central. Trata-se da chamada taxa SELIC (Sistema Especial de Liquidação e Custódia), que é uma referência para o cálculo das demais taxas de juros de todo o crédito concedido na economia do país.\n\nAlgumas taxas de juros podem ser negociadas em determinadas ocasiões – durante renegociações de dívida, por exemplo. Ao definir suas taxas de juros, os bancos e as instituições financeiras levam em conta diversos fatores, por exemplo, risco de inadimplência, volume dos recursos emprestados e prazo para pagamento daquela operação, fazendo que as taxas de juros variem de um banco para outro.\n\nFIQUE ATENTO\n• Para saber o impacto dos juros sobre suas operações, verifique se está lidando com juros simples ou compostos.\n• Confira também se tarifas e taxas de correção monetária, como inflação, são aplicadas.\n• Ao fazer compras a prazo, não se esqueça de calcular os juros das parcelas.\n\nE a Inflação, o que é?\n\nEla é considerada um dos termômetros mais importantes da situação econômica de um país. A inflação está presente nos noticiários e tem influência direta nas operações financeiras.\n\nInflação pode ser entendida como o aumento contínuo e generalizado dos preços de produtos e serviços na economia.\n\nEsse aumento reduz o poder de compra das pessoas e faz com que um produto ou serviço seja mais caro hoje do que era antes, por exemplo.\n\nA inflação afeta diretamente sua vida porque ela afeta o valor do seu dinheiro. Ou seja, o quanto você consegue comprar com a mesma quantia. Você lembra quantos pãezinhos comprava com R$ 1,00 há dez anos? E quantos você compra hoje com o mesmo valor? Essa diferença é o reflexo da inflação.\n\nVeja alguns exemplos de como a inflação pode afetar seu orçamento:\n• Gastos domésticos: se as pesquisas indicam aumento geral de inflação, você provavelmente deve ter percebido aumento semelhante – muitas vezes, maior – no dia a dia, por exemplo, no supermercado, padaria ou no cabeleireiro.\n• Serviços: diversos contratos preveem reajustes de acordo com índices de inflação. É o caso de planos de saúde, aluguel de imóveis, energia elétrica e até pedágios.\n• Investimentos: a inflação afeta diretamente o valor real dos seus rendimentos, diminuindo o valor do seu dinheiro e exigindo correção nos valores investidos periodicamente. Os R$ 100 mil acumulados ao longo de anos não terão o mesmo valor de compra se não forem corrigidos pela inflação."
+            android:textSize="16sp"
+            android:layout_below="@id/imgSubtema2"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtSubtema4Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Investimentos"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Imagem do Subtema 4 -->
+        <ImageView
+            android:id="@+id/imgSubtema4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/investimentos"
+            android:layout_below="@id/txtSubtema4Titulo"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Conteúdo do Subtema 4 -->
+        <TextView
+            android:id="@+id/txtSubtema4Conteudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Investir é, basicamente, emprestar o seu dinheiro ao banco para receber os juros pelo dinheiro emprestado. Ou, ainda, aplicar o seu dinheiro em um negócio que vai render lucros. Mas seu objetivo em investir não precisa ser apenas para guardar dinheiro pensando no futuro ou acumular riqueza. O investimento deve fazer parte do seu planejamento financeiro e atender aos seus objetivos de vida.\n\nVocê pode querer investir por vários motivos: para garantir uma reserva para emergências, para ter uma aposentadoria mais tranquila e até mesmo para realizar aquela viagem que você deseja há algum tempo. Para realizar sonhos, é preciso economizar, poupar. Os investimentos são grandes aliados na hora de fazer o seu dinheiro poupado render juros.\n\nUm exemplo simples, com valores fictícios:\nVocê aplica R$ 100,00 no banco. Assim como você, outros 500 clientes fazem o mesmo. Com R$ 50 mil disponíveis, o banco investe esse valor em um empreendimento imobiliário. Ao final do mês, o banco consegue receber de volta R$ 51 mil e repassar, a cada um dos 500 clientes, R$ 1,00 referente aos juros por ter usado o seu dinheiro.\n\nPOR QUE INVESTIR?\n\nOs investimentos devem atender aos seus objetivos de vida e você pode começar a investir prevendo dois tipos de reservas: uma para emergências e outra para projetos de vida.\n\n    Emergências: é o dinheiro que você vai poupar para situações de imprevistos financeiros. Mantendo essa reserva em dia, você evita ter de recorrer a ofertas de crédito com altos juros. O ideal é poupar o equivalente a 12 meses de salário. Se não for possível, que seja o equivalente a sete meses, que é o tempo que uma pessoa leva para se recolocar profissionalmente em caso de desemprego, segundo o Departamento Intersindical de Estatística e Estudos Socioeconômicos (Dieese). Procure ter uma reserva para emergências, mesmo que pequena!\n    Projetos de vida: essa é a reserva para a realização de sonhos e planos, como a compra de um imóvel, a troca do carro, uma viagem, o nascimento de um filho, a faculdade dos filhos ou a aposentadoria.\n\nFIQUE ATENTO\n\nÉ importante “carimbar” parte do seu dinheiro para cada projeto de vida que você quiser realizar. Quando o dinheiro de um projeto é usado para outro objetivo, você fica mais longe de realizá-lo. No caso de uma reserva para uma aposentadoria mais tranquila, é o seu futuro financeiro que está em jogo!\n\nQUAIS SÃO OS TIPOS DE INVESTIMENTOS?\n\n    Poupança: uma das aplicações mais tradicionais, a poupança aceita valores baixos para que você comece a investir e permite retiradas imediatas. Os juros pagos são definidos pelo Banco Central.\n\n    Previdência Privada: é um investimento de longo prazo para complementar a aposentadoria.\n\n    Fundos de investimento: funciona mais ou menos como um condomínio de investidores, onde cada investidor adquire uma cota desse fundo. Existem vários tipos de fundos de investimentos para vários perfis de investidores, de conservadores a moderados até os arrojados, que aceitam correr mais riscos na hora de investir.\n\n    Tesouro direto: é a compra de títulos públicos federais. Trata-se de um investimento seguro e de valor inicial baixo.\n\n    Ações: são partes de uma companhia. É como se a empresa fosse um bolo. Ao comprar ações, você passa a ser dono de uma fatia desse bolo, um acionista. Os rendimentos de quem investe em ações variam de acordo com a oscilação do valor dessa empresa na bolsa de valores.\n\n    CDBs: são títulos de renda fixa, depósitos a prazo utilizados pelos bancos para captar recursos. É uma modalidade de baixo risco.\n\nAntes de decidir pelo investimento em que vai aplicar o seu dinheiro, estude cada possibilidade a fundo e veja qual se adequa melhor ao seu estilo de vida. Na hora de escolher, leve em conta:\n\n    O valor inicial mínimo do investimento;\n\n    Se o índice de rendimento está acima ou abaixo da inflação;\n\n    O prazo ideal de retirada do dinheiro investido em função de seus projetos de vida;\n\n    A incidência de impostos;\n\n    Se há carência para resgate do dinheiro investido ou movimentação;\n\n    O valor de taxas: administração, carregamento, corretagem e performance.\n\nOs investimentos também variam quanto ao tempo:\n\n    Investimento de curto prazo: são as aplicações que você realiza para objetivos de até 2 anos, ou seja, é a reserva financeira que você aplica para resgatar quando precisar. Pode ser uma poupança para eventos inesperados ou para um objetivo pré-determinado, como uma viagem de férias, troca do carro, do computador ou de um eletrodoméstico. Os exemplos mais comuns desse tipo de investimento são: Poupança, CDBs (Certificados de Depósitos Bancários) e Letras Financeiras do Tesouro.\n\n    Investimento de médio prazo: são aquelas aplicações financeiras que você faz para realizar projetos que exigem mais planejamento e tempo: entre 2 e 5 anos. Pode ser a viagem dos sonhos, a reforma da casa ou a compra de um imóvel. Os exemplos mais comuns desse tipo de investimento são: LTNs (Letras do Tesouro Nacional), CDBs (Certificados de Depósitos Bancários) e NTN-Bs (Notas do Tesouro Nacional – Série B).\n\n    Investimento de longo prazo: são as aplicações financeiras que você realiza para alcançar objetivos que podem esperar mais tempo até o seu resgate (mais de 5 anos) e exigem maior rentabilidade: compra de imóveis, faculdade dos filhos, aposentadoria ou a abertura de um negócio próprio. Neste caso, o cuidado com a sua aplicação deve ser redobrado, pois a rentabilidade é maior e os riscos, também. Os exemplos mais comuns desse tipo de investimento são: NTN-Bs Principal (Notas do Tesouro Nacional Série-B Principal), ações de boas e sólidas empresas com crescimento em vendas, lucros e com boa gestão de caixa."
+            android:textSize="16sp"
+            android:layout_below="@id/imgSubtema4"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </RelativeLayout>
+</ScrollView>

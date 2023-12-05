@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtSubtema3Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Créditos"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Imagem do Subtema 3 -->
+        <ImageView
+            android:id="@+id/imgSubtema3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/credito"
+            android:layout_below="@id/txtSubtema3Titulo"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Conteúdo do Subtema 3 -->
+        <TextView
+            android:id="@+id/txtSubtema3Conteudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do crediário na loja aos empréstimos em bancos, há diversas formas de crédito que fazem parte do dia a dia de todo mundo. A base do crédito é a confiança, pois o dinheiro é emprestado confiando que ele será devolvido.\n\nNo caso de crediários ou cartão de crédito, a compra é feita e há a confiança de que o pagamento ocorrerá futuramente, no prazo combinado, em geral trinta dias após a compra.\n\nDe acordo com o tipo de crédito, o risco de calote, o prazo de pagamento e a quantidade de dinheiro envolvido, os juros cobrados mudam, influenciando na decisão das instituições financeiras na hora de conceder um crédito ao cliente.\n\nQuais são os principais tipos de crédito?\n\n• Cartão de crédito: com o cartão, é possível fazer compras e realizar o pagamento futuramente. As compras feitas são centralizadas numa fatura que deve ser paga mensalmente. Para ter o cartão e poder usar normalmente, em geral, o cliente paga uma anuidade para empresa ou banco que emite.\n\nDica: os gastos feitos no cartão precisam ser planejados e a fatura deve ser paga no dia de vencimento, no valor integral, para que seu uso seja vantajoso.\n\n• Cheque especial: é um limite disponibilizado na conta corrente, que funciona como uma espécie de empréstimo que o banco oferece de forma automática, para ser utilizado quando o cliente precisar.\n\nDica: quando usado, o valor devido é pago com altos juros e por isso esse tipo de crédito deve ser usado apenas em caso de emergência, por poucos dias.\n\n• Compra parcelada: o chamado crediário, comum em lojas, é a oferta de pagamento parcelado. Essa modalidade facilita a compra de produtos mais caros, mas geralmente prevê o pagamento de juros nas parcelas.\n\nDica: antes de escolher essa forma de pagamento, calcule o valor total do produto parcelado. Se possível, tente negociar um desconto e pagar à vista, pois quem tem dinheiro na mão tem maior poder de barganha.\n\n• Empréstimo: os bancos oferecem várias modalidades de crédito pessoal (empréstimo) aos seus clientes. Os empréstimos podem servir tanto para realizar uma compra de valor alto, quanto para saldar dívidas de outras modalidades de crédito com juros mais altos.\n\nDica: é importante se planejar para quitar as parcelas mensais no prazo e não se endividar.\n\n• Crédito consignado: é uma modalidade de empréstimo em que as parcelas são descontadas diretamente da folha de pagamento, sem necessidade de avalista. É um tipo de crédito que conta com vantagens especiais e melhores condições para funcionários de empresas e órgãos conveniados com o banco, aposentados e pensionistas do INSS.\n\nDica: é um dos tipos de crédito onde a taxa de juros é mais baixa, pois como o dinheiro da parcela já é descontado direto do pagamento do cliente, o risco de inadimplência é menor para o banco.\n\n• Penhor: é um tipo de empréstimo em que o cliente oferece um bem de valor (obras de arte, joias, relógio, por exemplo) como garantia para o pagamento da dívida. Se ela não for quitada, o banco coloca o bem em leilão.\n\n• Financiamento: é um empréstimo de longo prazo, geralmente usado para a compra de imóveis ou automóveis. Essa modalidade exige comprometimento por muitos meses.\n\nDica: antes de fazer um financiamento, é importante planejar também os novos gastos que o bem adquirido trará para o orçamento, como seguros, combustível (por exemplo, em caso de veículos).\n\n• Leasing: é uma modalidade de financiamento em que o bem é adquirido em nome do banco e arrendado para o cliente até que a dívida seja quitada. Se o cliente deixa de pagar as parcelas, o banco retoma o bem mais rapidamente.\n\n• Microcrédito: é um empréstimo para micro e pequenos empreendedores, formais ou informais. Serve para ajudar a investir no seu negócio, seja para comprar uma máquina, equipamento, ferramentas, os materiais para sua atividade, as mercadorias, ou ainda reformar o equipamento ou o local onde você trabalha.\n\nFIQUE ATENTO\nCompare os juros oferecidos pelas modalidades de crédito e evite endividamentos. Entrou no limite do cheque especial e não consegue sair mais ou não vai conseguir pagar a fatura integral do cartão? Consulte seu gerente sobre as ofertas de crédito pessoal disponíveis e com juros mais baixos."
+            android:textSize="16sp"
+            android:layout_below="@id/imgSubtema3"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </RelativeLayout>
+</ScrollView>

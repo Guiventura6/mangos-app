@@ -223,7 +223,7 @@ public class HomeFragment extends Fragment {
 
                 saldo = ganhos - gastos;
                 String str_saldo=String.valueOf(saldo);
-                if (saldo < 0){
+                if (saldo < 0 && getContext() != null){
                     total_saldo.setText("R$ "+str_saldo);
                     total_saldo.setTextColor(ContextCompat.getColor(getContext(), R.color.gastos));
                 } else {

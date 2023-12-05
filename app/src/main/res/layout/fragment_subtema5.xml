@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Título do Subtema 5 -->
+        <TextView
+            android:id="@+id/txtSubtema5Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Imagem do Subtema 5 -->
+        <ImageView
+            android:id="@+id/imgSubtema5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/contas"
+            android:layout_below="@id/txtSubtema5Titulo"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Conteúdo do Subtema 5 -->
+        <TextView
+            android:id="@+id/txtSubtema5Conteudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quando você coloca o seu dinheiro no banco, geralmente você utiliza uma conta bancária para movimentar esses recursos. Como existem diversos tipos de contas, saber qual é a mais indicada para você dependerá de como você lida com seu dinheiro e qual seu objetivo em ter uma conta. Analise as opções a seguir para saber qual a mais indica para você.\n\nConta poupança\n\nTalvez seja a mais conhecida de todas as contas. Com a conta poupança, você consegue guardar seu dinheiro e ainda receber o rendimento dele. Seu dinheiro fica salvo para seus objetivos e para necessidades futuras, mas lembre-se que o rendimento só ocorre após 30 dias sem movimentar a conta.\n\nAlém da conta poupança Azul, a CAIXA possui outras três modalidades de poupança:\n\nPoupança integrada\nÉ a conta poupança vinculada à sua conta corrente. Para ativá-la, basta transferir o valor da sua conta corrente CAIXA para a poupança integrada. Você pode fazer a transferência em Agências da CAIXA, em terminais de Autoatendimento, pelo Internet Banking CAIXA ou pelo aplicativo CAIXA para celular. Você movimenta esse tipo de conta poupança com o mesmo cartão e senha da sua conta corrente CAIXA.\n\nPoupança CAIXA Fácil\nModalidade de conta simplificada, que pode ser aberta em Lotéricas e Correspondentes CAIXA Aqui, com limite de saldo e movimentação mensal de R$ 3.000,00.\n\nA conta possui um cartão que permite realizar compras, depósitos, consultas de saldo, transferências e muito mais.\n\nSe você é beneficiário do Bolsa Família e abre uma Poupança CAIXA Fácil, passará a receber o benefício diretamente nesta conta.\n\nPoupança Social Digital CAIXA\nA Poupança Social Digital CAIXA é uma modalidade de poupança simplificada, aberta para beneficiários de programas governamentais e com limite de saldo e movimentação máxima mensal de R$ 3.000,00. A movimentação da Poupança Social Digital é feita pelo aplicativo CAIXA Tem.\n\nConta-corrente\n\nA conta corrente é indicada para quem necessita movimentar dinheiro constantemente. Ela permite o recebimento de pagamentos e depósitos com facilidade e rapidez, além de outras vantagens em seus serviços. Geralmente, é movimentada por meio de um cartão de débito, que também é utilizado para fazer compras e sacar dinheiro.\n\nEsse tipo de conta, por permitir uma movimentação mais ampla, costuma ter atrelado a ela um pacote básico de serviços, padronizado pelo Banco Central, que  inclui:\n\n    Fornecimento de cartão com função de débito;\n    4 (quatro) saques por mês;\n    2 (duas) transferências bancárias entre contas da instituição;\n    2 (dois) extratos bancários por mês;\n    10 (dez) folhas de cheque por mês;\n    Consultas pela internet.\n\nSe o cliente desejar, ele pode contratar outro pacote de serviços, que será pago todo mês, e que oferecerá uma quantidade de serviços além daqueles que são básicos. Por exemplo: transferências para outros bancos e um número maior de consultas a extratos e outras transações.\n\nOs pacotes de serviços adicionais são mais vantajosos do que o pagamento avulso por cada transação realizada individualmente pelo cliente. Para saber qual o pacote mais indicado ao seu perfil e ao seu estilo, identifique quais os serviços você pretende utilizar no mês e compare as opções antes de contratar."
+            android:textSize="16sp"
+            android:layout_below="@id/imgSubtema5"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </RelativeLayout>
+</ScrollView>

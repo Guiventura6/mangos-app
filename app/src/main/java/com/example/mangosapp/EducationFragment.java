@@ -44,51 +44,48 @@ public class EducationFragment extends Fragment {
         listDataChild = new HashMap<>();
 
         // Add themes (headers) and related topics (child items)
-        listDataHeader.add("Princípios das Finanças");
-        listDataHeader.add("Economia (Poupança)");
-        listDataHeader.add("Livre-se das Dívidas");
-        listDataHeader.add("Negócios e Investimento");
-        listDataHeader.add("Desenvolvimento Pessoal");
+        listDataHeader.add("Conceitos Básicos");
+        listDataHeader.add("Atravesse a Crise");
+        listDataHeader.add("Cuide do seu dinheiro");
+        listDataHeader.add("Saia do Vermelho");
+        listDataHeader.add("Planeje o Futuro");
         listDataHeader.add("Hábitos Financeiros e Reflexões");
 
         List<String> principios_das_financas = new ArrayList<>();
-        principios_das_financas.add("Compreenda melhor as finanças");
-        principios_das_financas.add("Ganhe mais dinheiro");
-        principios_das_financas.add("Gerencie melhor o seu dinheiro");
-        principios_das_financas.add("Evite problemas financeiros");
-        principios_das_financas.add("Erros que o tornam mais pobre");
-        principios_das_financas.add("Meça o estado das suas finanças");
-        principios_das_financas.add("Cartão de débito vs. cartão de crédito");
+        principios_das_financas.add("Receitas e Despesas");
+        principios_das_financas.add("Juros e inflação");
+        principios_das_financas.add("Créditos");
+        principios_das_financas.add("Investimentos");
+        principios_das_financas.add("Contas");
 
         List<String> poupanca = new ArrayList<>();
-        poupanca.add("Truques que fazem você gastar mais");
-        poupanca.add("Coisas das quais nos arrependemos de comprar");
-        poupanca.add("Aprenda a reduzir despesas");
-        poupanca.add("Por que devemos economizar");
-        poupanca.add("Como economizar I");
-        poupanca.add("Como economizar II");
-        poupanca.add("Erros ao economizar");
-        poupanca.add("Econômico vs. Mesquinho");
+        poupanca.add("Diferença entre desejo e necessidade");
+        poupanca.add("Descobrindo seu equilíbrio");
+        poupanca.add("Liste os itens essenciais antes de ir às compras");
+        poupanca.add("Cuidado com as propagandas");
+        poupanca.add("Proteja seu dinheiro");
 
         List<String> livre_se_das_dividas = new ArrayList<>();
-        livre_se_das_dividas.add("Como pagar minhas dívidas");
-        livre_se_das_dividas.add("O custo de se endividar");
-        livre_se_das_dividas.add("Decidir se devo pagar minhas dívidas");
+        livre_se_das_dividas.add("Organize seu orçamento");
+        livre_se_das_dividas.add("Fazendo seu orçamento na práticar");
+        livre_se_das_dividas.add("Estratégias para economizar, gastando melhor");
+        livre_se_das_dividas.add("Ganhar mais significa poder gastar mais?");
+        livre_se_das_dividas.add("Como se preparar para imprevistos?");
 
 
         List<String> negocios_e_investimentos = new ArrayList<>();
-        negocios_e_investimentos.add("Princípios básicos de empreendimento");
-        negocios_e_investimentos.add("Limitações para o bom empreendedorismo");
-        negocios_e_investimentos.add("Trabalhos Freelance");
-        negocios_e_investimentos.add("Trabalho árduo vs. Trabalho inteligente");
-        negocios_e_investimentos.add("Investir");
+        negocios_e_investimentos.add("Conheça o tamanho da sua dívida");
+        negocios_e_investimentos.add("Como retomar o controle");
+        negocios_e_investimentos.add("Faça um plano para pagamento");
+        negocios_e_investimentos.add("Diminua gastos e tente ter uma renda extra");
+        negocios_e_investimentos.add("Use as opções de crédito a seu favor");
 
         List<String> desenvolvimento_pessoal = new ArrayList<>();
-        desenvolvimento_pessoal.add("Comece a se desenvolver");
-        desenvolvimento_pessoal.add("Elimine o que te limita");
-        desenvolvimento_pessoal.add("Bons hábitos");
-        desenvolvimento_pessoal.add("Seja um líder");
-        desenvolvimento_pessoal.add("Vença a preguiça");
+        desenvolvimento_pessoal.add("Como planejar");
+        desenvolvimento_pessoal.add("Estabeleça objetivos de curto, médio e longo prazo");
+        desenvolvimento_pessoal.add("Como alcançar suas metas");
+        desenvolvimento_pessoal.add("Estilo de vida e riscos de endividamento");
+        desenvolvimento_pessoal.add("Rumo à cidadania financeira");
 
 
         List<String> habitos_financeiros_e_reflexoes = new ArrayList<>();
