@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MangosAPP"
         tools:targetApi="31">
         <activity
+            android:name=".DetalhesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReseatActivity"
             android:exported="false" />
         <activity
@@ -19,7 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".HomeFragment"
             android:exported="false" />

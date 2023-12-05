@@ -1,6 +1,7 @@
 package com.example.mangosapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String childText = (String) getChild(groupPosition, childPosition);
+
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, null);
@@ -40,6 +42,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView txtListChild = convertView.findViewById(R.id.lblListItem);
         txtListChild.setText(childText);
+
+        // Adiciona um evento de clique para os subtemas
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aqui você pode iniciar uma nova atividade com o conteúdo do subtema clicado
+                Intent intent = new Intent(context, DetalhesActivity.class);
+                intent.putExtra("conteudo", childText);
+                context.startActivity(intent);
+            }
+        });
+
         return convertView;
     }
 
