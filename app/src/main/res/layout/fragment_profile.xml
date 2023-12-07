@@ -26,26 +26,20 @@
         android:text="Nome do Usuário"
         android:textSize="18sp"
         android:layout_gravity="center"
-        android:paddingTop="8dp" />
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
     <!-- Informações adicionais do perfil -->
-    <TextView
-        android:id="@+id/profile_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Informações adicionais do perfil"
-        android:textSize="14sp"
-        android:layout_gravity="center"
-        android:paddingTop="8dp" />
 
     <!-- Botão para editar perfil -->
     <Button
-        android:id="@+id/edit_profile_button"
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar Perfil"
+        android:layout_height="34dp"
         android:layout_gravity="center"
-        android:paddingTop="16dp" />
+        android:background="@color/appbar"
+        android:text="SAIR"
+        android:textColor="@color/white" />
 
     <!-- Outros elementos, como listas de posts, seguidores, etc., podem ser adicionados aqui -->
 
