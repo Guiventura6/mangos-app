@@ -44,6 +44,6 @@ Licença
 
 Este projeto é licenciado sob a Licença MIT. Sinta-se à vontade para usar, modificar e distribuir conforme necessário.
 
-Obrigado por escolher o Nome do Seu Aplicativo! Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato.
+Obrigado por escolher o Mangos APP! Se tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato.
 
 Equipe de Desenvolvimento
