@@ -1,6 +1,7 @@
 # mangos-app
 
 Bem-vindo ao repositório do aplicativo mangos app! Este é um projeto Android desenvolvido em Java utilizando o Android Studio e integrado com o Firebase para oferecer uma experiência poderosa e eficiente. Leia as instruções abaixo para começar:
+
 Visão Geral
 
 O mangos app é uma aplicação Android para controle de finanças pessoais e educação financeira . Ele usa o Firebase para armazenar dados de forma segura e oferecer recursos como autenticação de usuários em tempo real.
